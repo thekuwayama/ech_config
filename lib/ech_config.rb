@@ -1,8 +1,12 @@
 # frozen_string_literal: true
 
-require 'ech_config/version'
-require 'ech_config/error'
-require 'ech_config/ech_config_contents'
+class ECHConfig
+  # define class
+end
+
+require_relative 'ech_config/error'
+require_relative 'ech_config/ech_config_contents'
+require_relative 'ech_config/version'
 
 class ECHConfig
   attr_reader :version, :echconfigcontents

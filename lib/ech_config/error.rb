@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module ECHConfig
+class ECHConfig
   module Error
     # Generic error, common for all classes under ECHConfig::Error module.
     class Error < StandardError; end
