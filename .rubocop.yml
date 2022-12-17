@@ -1,0 +1,27 @@
+AllCops:
+  TargetRubyVersion: 2.7
+
+Style/ConditionalAssignment:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/NumericLiterals:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
+Metrics/AbcSize:
+  Max: 30
+
+Metrics/MethodLength:
+  Max: 30
+
+Naming/MethodParameterName:
+  MinNameLength: 1
+
+Metrics/BlockLength:
+  Exclude:
+    - 'spec/*.rb'
