@@ -35,27 +35,27 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig
   # :nodoc
   # rubocop:disable Metrics/AbcSize
   def self.decode(octet)
-    raise ::Resolv::DNS::DecodeError if octet.empty?
+    raise ::ECHConfig::DecodeError if octet.empty?
 
     config_id = octet.slice(0, 1).unpack1('C')
     i = 1
-    raise ::Resolv::DNS::DecodeError if i + 2 > octet.length
+    raise ::ECHConfig::DecodeError if i + 2 > octet.length
 
     kem_id = HpkeKemId.decode(octet.slice(i, 2))
     i += 2
-    raise ::Resolv::DNS::DecodeError if i + 2 > octet.length
+    raise ::ECHConfig::DecodeError if i + 2 > octet.length
 
     pk_len = octet.slice(i, 2).unpack1('n')
     i += 2
-    raise ::Resolv::DNS::DecodeError if i + pk_len > octet.length
+    raise ::ECHConfig::DecodeError if i + pk_len > octet.length
 
     public_key = HpkePublicKey.decode(octet.slice(i, pk_len))
     i += pk_len
-    raise ::Resolv::DNS::DecodeError if i + 2 > octet.length
+    raise ::ECHConfig::DecodeError if i + 2 > octet.length
 
     cs_len = octet.slice(i, 2).unpack1('n')
     i += 2
-    raise ::Resolv::DNS::DecodeError if i + 2 > octet.length
+    raise ::ECHConfig::DecodeError if i + 2 > octet.length
 
     cs_bin = octet.slice(i, cs_len)
     i += cs_len

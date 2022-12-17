@@ -35,24 +35,24 @@ class ECHConfig::ECHConfigContents
   # :nodoc
   def self.decode(octet)
     key_config, octet = HpkeKeyConfig.decode(octet)
-    raise ::Resolv::DNS::DecodeError if octet.length < 2
+    raise ::ECHConfig::DecodeError if octet.length < 2
 
     maximum_name_length = octet.slice(0, 1).unpack1('C')
     pn_len = octet.slice(1, 1).unpack1('C')
     i = 2
-    raise ::Resolv::DNS::DecodeError if i + pn_len > octet.length
+    raise ::ECHConfig::DecodeError if i + pn_len > octet.length
 
     public_name = octet.slice(i, pn_len)
     i += pn_len
-    raise ::Resolv::DNS::DecodeError if i + 2 > octet.length
+    raise ::ECHConfig::DecodeError if i + 2 > octet.length
 
     ex_len = octet.slice(i, 2).unpack1('n')
     i += 2
-    raise ::Resolv::DNS::DecodeError if i + ex_len > octet.length
+    raise ::ECHConfig::DecodeError if i + ex_len > octet.length
 
     extensions = Extension.decode_vectors(octet.slice(i, ex_len))
     i += ex_len
-    raise ::Resolv::DNS::DecodeError if i != octet.length
+    raise ::ECHConfig::DecodeError if i != octet.length
 
     new(
       key_config,

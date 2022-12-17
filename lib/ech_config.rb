@@ -1,5 +1,9 @@
 # frozen_string_literal: true
 
+require 'ech_config/version'
+require 'ech_config/error'
+require 'ech_config/ech_config_contents'
+
 class ECHConfig
   attr_reader :version, :echconfigcontents
 
@@ -20,21 +24,19 @@ class ECHConfig
     i = 0
     echconfigs = []
     while i < octet.length
-      raise ::Resolv::DNS::DecodeError if i + 4 > octet.length
+      raise ::ECHConfig::DecodeError if i + 4 > octet.length
 
       version = octet.slice(i, 2)
       length = octet.slice(i + 2, 2).unpack1('n')
       i += 4
-      raise ::Resolv::DNS::DecodeError if i + length > octet.length
+      raise ::ECHConfig::DecodeError if i + length > octet.length
 
       echconfig_contents = ECHConfigContents.decode(octet.slice(i, length))
       i += length
       echconfigs << new(version, echconfig_contents)
     end
-    raise ::Resolv::DNS::DecodeError if i != octet.length
+    raise ::ECHConfig::DecodeError if i != octet.length
 
     echconfigs
   end
 end
-
-require_relative 'ech_config/ech_config_contents'

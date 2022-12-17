@@ -18,16 +18,16 @@ class ECHConfig::ECHConfigContents::Extension
     i = 0
     extensions = []
     while i < octet.length
-      raise ::Resolv::DNS::DecodeError if i + 4 > octet.length
+      raise ::ECHConfig::DecodeError if i + 4 > octet.length
 
       ex_len = octet.slice(i + 2, 2)
       i += 4
-      raise ::Resolv::DNS::DecodeError if i + ex_len > octet.length
+      raise ::ECHConfig::DecodeError if i + ex_len > octet.length
 
       extensions << new(octet.slice(i, ex_len)) # TODO
       i += ex_len
     end
-    raise ::Resolv::DNS::DecodeError if i != octet.length
+    raise ::ECHConfig::DecodeError if i != octet.length
 
     extensions
   end

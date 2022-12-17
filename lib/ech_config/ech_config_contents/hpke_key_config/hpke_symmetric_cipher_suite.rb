@@ -27,7 +27,7 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite
     i = 0
     cipher_suites = []
     while i < octet.length
-      raise ::Resolv::DNS::DecodeError if i + 4 > octet.length
+      raise ::ECHConfig::DecodeError if i + 4 > octet.length
 
       kdf_id = HpkeKdfId.decode(octet.slice(i, 2))
       aead_id = HpkeAeadId.decode(octet.slice(i + 2, 2))

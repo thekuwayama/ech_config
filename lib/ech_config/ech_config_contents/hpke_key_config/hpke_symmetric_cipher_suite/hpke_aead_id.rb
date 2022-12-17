@@ -15,7 +15,7 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite::Hpk
 
   # :nodoc
   def self.decode(octet)
-    raise ::Resolv::DNS::DecodeError if octet.length != 2
+    raise ::ECHConfig::DecodeError if octet.length != 2
 
     new(octet.unpack1('n'))
   end
