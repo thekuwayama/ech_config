@@ -1,3 +1,4 @@
+# encoding: ascii-8bit
 # frozen_string_literal: true
 
 class ECHConfig
@@ -14,6 +15,10 @@ class ECHConfig
   # @param version [String]
   # @param echconfig_contents [ECHConfigContents]
   def initialize(version, echconfig_contents)
+    v = version.unpack1('S*')
+    # https://author-tools.ietf.org/iddiff?url2=draft-ietf-tls-esni-11.txt#context-3
+    raise ::ECHConfig::DecodeError unless v > "\xfe\x0a".unpack1('S*') && v <= "\xfe\x0d".unpack1('S*')
+
     @version = version
     @echconfig_contents = echconfig_contents
   end
