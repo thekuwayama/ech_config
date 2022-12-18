@@ -1,14 +1,16 @@
 # frozen_string_literal: true
 
 require 'base64'
-require 'ech_config'
 require 'json'
 require 'net/http'
 require 'uri'
 
+require "#{File.dirname(__FILE__)}/../lib/ech_config"
+
 front = ARGV[0] || 'localhost'
 backend = ARGV[1] || 'draft-13.esni.localhost'
 uri = URI("https://#{front}/.well-known/ech/#{backend}.json")
+
 res = Net::HTTP.get_response(uri)
 unless res.is_a?(Net::HTTPSuccess)
   warn 'error: HTTP Status is not 200'
