@@ -1,19 +1,21 @@
+# typed: true
 # frozen_string_literal: true
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkePublicKey
+  extend T::Sig
   attr_reader :opaque
 
-  # @param opaque [String]
+  sig { params(opaque: String).void }
   def initialize(opaque)
     @opaque = opaque
   end
 
-  # @return [String]
+  sig { returns(String) }
   def encode
     @opaque.then { |s| [s.length].pack('n') + s }
   end
 
-  # :nodoc
+  sig { params(octet: String).returns(T.attached_class) }
   def self.decode(octet)
     new(octet)
   end

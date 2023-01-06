@@ -2,7 +2,12 @@
 
 source 'https://rubygems.org'
 
-gem 'rake'
+gem 'sorbet-runtime'
+
+group :development do
+  gem 'rake'
+  gem 'sorbet'
+end
 
 group :test do
   gem 'byebug'
