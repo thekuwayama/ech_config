@@ -20,7 +20,7 @@ end
 
 JSON.parse(res.body, symbolize_names: true).each do |h|
   octet = Base64.decode64(h[:echconfiglist])
-  unless octet.length == octet.slice(0, 2)&.unpack1('n') + 2
+  unless octet.length - 2 == octet.slice(0, 2)&.unpack1('n')
     warn 'error: failed to parse echconfiglist'
     exit 1
   end
