@@ -5,7 +5,6 @@
 require 'sorbet-runtime'
 
 class ECHConfig
-  extend T::Sig
   # define class
 end
 
@@ -14,21 +13,20 @@ require_relative 'ech_config/ech_config_contents'
 require_relative 'ech_config/version'
 
 class ECHConfig
-  attr_reader :version, :echconfigcontents
+  extend T::Sig
+  attr_reader :version, :echconfig_contents
+  private_class_method :new
 
-  sig do
-    params(
-      version: String,
-      echconfig_contents: ECHConfigContents
-    ).void
-  end
+  @version = T.let(nil, T.nilable(String))
+  @echconfig_contents = T.let(nil, T.nilable(ECHConfigContents))
+
   def initialize(version, echconfig_contents)
     v = version.unpack1('n')
     # https://author-tools.ietf.org/iddiff?url2=draft-ietf-tls-esni-11.txt#context-3
     raise ::ECHConfig::Error unless v > "\xfe\x0a".unpack1('n') && v <= "\xfe\x0d".unpack1('n')
 
     @version = version
-    @echconfig_contents = echconfig_contents
+    @echconfig_contents = echconfig_contents    
   end
 
   sig { returns(String) }

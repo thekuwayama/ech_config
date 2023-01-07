@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig
-  extend T::Sig
   # define class
 end
 
@@ -10,6 +9,7 @@ Dir["#{File.dirname(__FILE__)}/hpke_key_config/*.rb"]
   .sort.each { |f| require f }
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig
+  extend T::Sig
   attr_reader :config_id, :kem_id, :public_key, :cipher_suites
 
   sig do

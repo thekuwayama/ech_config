@@ -2,7 +2,6 @@
 # frozen_string_literal: true
 
 class ECHConfig::ECHConfigContents
-  extend T::Sig
   # define class
 end
 
@@ -10,6 +9,7 @@ Dir["#{File.dirname(__FILE__)}/ech_config_contents/*.rb"]
   .sort.each { |f| require f }
 
 class ECHConfig::ECHConfigContents
+  extend T::Sig
   attr_reader :key_config, :maximum_name_length, :public_name, :extensions
 
   sig do

@@ -2,17 +2,14 @@
 
 source 'https://rubygems.org'
 
-gem 'sorbet-runtime'
-
-group :development do
-  gem 'rake'
-  gem 'sorbet'
-end
+gemspec
 
 group :test do
   gem 'byebug'
+  gem 'rake'
   gem 'rspec', '3.11'
-  gem 'rubocop', '1.35'
+  gem 'rubocop'
+  gem 'sorbet'
+  gem 'sorbet-runtime'
+  gem 'webrick'
 end
-
-gemspec
