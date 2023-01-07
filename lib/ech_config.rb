@@ -15,6 +15,7 @@ require_relative 'ech_config/version'
 class ECHConfig
   extend T::Sig
   attr_reader :version, :echconfig_contents
+
   private_class_method :new
 
   @version = T.let(nil, T.nilable(String))
@@ -26,7 +27,7 @@ class ECHConfig
     raise ::ECHConfig::Error unless v > "\xfe\x0a".unpack1('n') && v <= "\xfe\x0d".unpack1('n')
 
     @version = version
-    @echconfig_contents = echconfig_contents    
+    @echconfig_contents = echconfig_contents
   end
 
   sig { returns(String) }
