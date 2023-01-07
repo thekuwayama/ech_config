@@ -25,3 +25,4 @@ Naming/MethodParameterName:
 Metrics/BlockLength:
   Exclude:
     - 'spec/*.rb'
+    - 'sorbet/**/*'

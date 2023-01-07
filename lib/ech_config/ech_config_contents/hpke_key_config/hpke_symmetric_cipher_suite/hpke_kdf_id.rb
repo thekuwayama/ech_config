@@ -1,19 +1,21 @@
+# typed: true
 # frozen_string_literal: true
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite::HpkeKdfId
+  extend T::Sig
   attr_reader :uint16
 
-  # @param uint16 [Integer]
+  sig { params(uint16: Integer).void }
   def initialize(uint16)
     @uint16 = uint16
   end
 
-  # @return [String]
+  sig { returns(String) }
   def encode
     [@uint16].pack('n')
   end
 
-  # :nodoc
+  sig { params(octet: String).returns(T.attached_class) }
   def self.decode(octet)
     raise ::ECHConfig::DecodeError if octet.length != 2
 
