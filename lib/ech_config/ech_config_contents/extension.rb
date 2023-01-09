@@ -7,7 +7,7 @@ class ECHConfig::ECHConfigContents::Extensions
 
   sig { params(octet: String).void }
   def initialize(octet)
-    # Note: ECHConfig::ECHConfigContents::Extension only has octets.
+    # Note taht ECHConfig::ECHConfigContents::Extension only has octets.
     # If you need, deserialize octets to get TLS Extension objects.
     @octet = octet
   end
