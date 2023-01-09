@@ -17,7 +17,7 @@ class ECHConfig::ECHConfigContents
       key_config: HpkeKeyConfig,
       maximum_name_length: Integer,
       public_name: String,
-      extensions: T::Array[Extension]
+      extensions: Extensions
     ).void
   end
   def initialize(key_config,
@@ -35,7 +35,7 @@ class ECHConfig::ECHConfigContents
     @key_config.encode \
     + [@maximum_name_length].pack('C') \
     + @public_name.then { |s| [s.length].pack('C') + s } \
-    + @extensions.map(&:encode).join.then { |s| [s.length].pack('n') + s }
+    + @extensions.load.then { |s| [s.length].pack('n') + s }
   end
 
   sig { params(octet: String).returns(T.attached_class) }
@@ -62,12 +62,9 @@ class ECHConfig::ECHConfigContents
 
     ex_len = octet.slice(i, 2)&.unpack1('n')
     i += 2
-    raise ::ECHConfig::DecodeError if i + ex_len > octet.length
+    raise ::ECHConfig::DecodeError if i + ex_len != octet.length
 
-    extensions = Extension.decode_vectors(octet.slice(i, ex_len) || '')
-    i += ex_len
-    raise ::ECHConfig::DecodeError if i != octet.length
-
+    extensions = Extensions.store(octet)
     new(
       key_config,
       maximum_name_length,
