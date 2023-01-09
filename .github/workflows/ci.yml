@@ -26,9 +26,9 @@ jobs:
           gem install bundler
           bundle --version
           bundle install
-      - name: Run rubocop
+      - name: Run Rubocop
         run: |
           bundle exec rake rubocop
-      - name: Run Typecheck
+      - name: Run Sorbet type checker
         run: |
-          bundle exec srb tc
+          bundle exec rake sorbet
