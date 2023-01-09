@@ -24,7 +24,7 @@ class ECHConfig
   def initialize(version, echconfig_contents)
     v = version.unpack1('n')
     # https://author-tools.ietf.org/iddiff?url2=draft-ietf-tls-esni-11.txt#context-3
-    raise ::ECHConfig::Error unless v > "\xfe\x0a".unpack1('n') && v <= "\xfe\x0d".unpack1('n')
+    raise ::ECHConfig::UnsupportedVersion unless v > "\xfe\x0a".unpack1('n') && v <= "\xfe\x0d".unpack1('n')
 
     @version = version
     @echconfig_contents = echconfig_contents
