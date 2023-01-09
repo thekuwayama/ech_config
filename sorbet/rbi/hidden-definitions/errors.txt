@@ -11347,8 +11347,8 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Version_R
-#                Parser::Ruby24::Racc_Runtime_Core_Version_C
+# Did you mean?  Parser::Ruby24::Racc_Runtime_Core_Version_C
+#                Parser::Ruby24::Racc_Runtime_Core_Version_R
 #                Parser::Ruby24::Racc_Runtime_Version
 #                Parser::Ruby24::Racc_Runtime_Core_Id_C
 # uninitialized constant Parser::Ruby24::Racc_Runtime_Core_Version_C
@@ -12503,8 +12503,8 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  RDoc::RD::BlockParser::Racc_Runtime_Core_Version_R
-#                RDoc::RD::BlockParser::Racc_Runtime_Core_Version_C
+# Did you mean?  RDoc::RD::BlockParser::Racc_Runtime_Core_Version_C
+#                RDoc::RD::BlockParser::Racc_Runtime_Core_Version_R
 #                RDoc::RD::BlockParser::Racc_Runtime_Version
 #                RDoc::RD::BlockParser::Racc_Runtime_Core_Id_C
 # uninitialized constant RDoc::RD::BlockParser::Racc_Runtime_Core_Version_C
@@ -12552,8 +12552,8 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  RDoc::RD::InlineParser::Racc_Runtime_Core_Version_R
-#                RDoc::RD::InlineParser::Racc_Runtime_Core_Version_C
+# Did you mean?  RDoc::RD::InlineParser::Racc_Runtime_Core_Version_C
+#                RDoc::RD::InlineParser::Racc_Runtime_Core_Version_R
 #                RDoc::RD::InlineParser::Racc_Runtime_Version
 #                RDoc::RD::InlineParser::Racc_Runtime_Core_Id_C
 # uninitialized constant RDoc::RD::InlineParser::Racc_Runtime_Core_Version_C
@@ -12843,6 +12843,18 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # Did you mean?  REXML::ReferenceWriter
+# uninitialized constant RSpec::Core::ExampleGroup::BE_PREDICATE_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RSpec::Core::ExampleGroup::DYNAMIC_MATCHER_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RSpec::Core::ExampleGroup::HAS_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
 # uninitialized constant RSpec::Core::ExampleGroup::NOT_YET_IMPLEMENTED
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -14731,8 +14743,8 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
+# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
@@ -14789,14 +14801,14 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
+# Did you mean?  RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -14804,21 +14816,21 @@
 # Did you mean?  RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_R
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
+#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_R
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
+# Did you mean?  RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Version_C
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version_C
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Version
-#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Version
-#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
+#                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Version
 #                RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Core_Id_C
+#                RuboCop::AST::NodePattern::Parser::Racc_Runtime_Core_Id_C
 # uninitialized constant RuboCop::AST::NodePattern::Parser::WithMeta::Racc_Runtime_Type
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -18591,6 +18603,151 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # uninitialized constant RuboCop::Cop::Security::YAMLLoad::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::CallbackConditionalsBinding::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::CallbackConditionalsBinding::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::CallbackConditionalsBinding::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EnforceSigilOrder::BYTE_ORDER_MARK
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EnforceSigilOrder::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EnforceSigilOrder::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EnforceSigilOrder::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EnforceSigilOrder::SIGIL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EnforceSigilOrder::STRICTNESS_LEVELS
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  RuboCop::Cop::Sorbet::StrictSigil
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidExtendTSigHelpersInShims::BYTE_ORDER_MARK
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidExtendTSigHelpersInShims::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidExtendTSigHelpersInShims::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidIncludeConstLiteral::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidIncludeConstLiteral::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidIncludeConstLiteral::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidSuperclassConstLiteral::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidSuperclassConstLiteral::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidSuperclassConstLiteral::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidUntypedStructProps::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidUntypedStructProps::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidUntypedStructProps::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::OneAncestorPerLine::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::OneAncestorPerLine::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::OneAncestorPerLine::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::SignatureBuildOrder::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::SignatureBuildOrder::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::SignatureBuildOrder::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::SingleLineRbiClassModuleDefinitions::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::SingleLineRbiClassModuleDefinitions::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::SingleLineRbiClassModuleDefinitions::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::TypeAliasName::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::TypeAliasName::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::TypeAliasName::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ValidSigil::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ValidSigil::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ValidSigil::RESTRICT_ON_SEND
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
