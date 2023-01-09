@@ -9,6 +9,7 @@ group :test do
   gem 'rake'
   gem 'rspec', '3.11'
   gem 'rubocop'
+  gem 'rubocop-sorbet'
   gem 'sorbet'
   gem 'sorbet-runtime'
   gem 'webrick'

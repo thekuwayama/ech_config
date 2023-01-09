@@ -43,6 +43,8 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.24.1)
       parser (>= 3.1.1.0)
+    rubocop-sorbet (0.6.11)
+      rubocop (>= 0.90.0)
     ruby-progressbar (1.11.0)
     sorbet (0.5.10607)
       sorbet-static (= 0.5.10607)
@@ -61,6 +63,7 @@ DEPENDENCIES
   rake
   rspec (= 3.11)
   rubocop
+  rubocop-sorbet
   sorbet
   sorbet-runtime
   webrick

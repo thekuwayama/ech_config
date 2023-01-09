@@ -26,3 +26,9 @@ Metrics/BlockLength:
   Exclude:
     - 'spec/*.rb'
     - 'sorbet/**/*'
+
+require:
+  - rubocop-sorbet
+
+Sorbet:
+  Enabled: true

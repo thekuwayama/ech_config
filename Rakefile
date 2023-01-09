@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'bundler/gem_tasks'
@@ -7,4 +8,9 @@ require 'rspec/core/rake_task'
 RuboCop::RakeTask.new
 RSpec::Core::RakeTask.new(:spec)
 
-task default: %i[rubocop spec]
+desc 'Run Sorbet type checker'
+task :sorbet do
+  sh 'srb tc'
+end
+
+task default: %i[rubocop sorbet spec]
