@@ -55,6 +55,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-darwin-21
 
 DEPENDENCIES
   bundler
@@ -62,7 +63,7 @@ DEPENDENCIES
   ech_config!
   rake
   rspec (= 3.11)
-  rubocop
+  rubocop (= 1.42)
   rubocop-sorbet
   sorbet
   sorbet-runtime
