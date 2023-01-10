@@ -1,5 +1,6 @@
 # ech_config
 
+[![Gem Version](https://badge.fury.io/rb/ech_config.svg)](https://badge.fury.io/rb/ech_config)
 [![CI](https://github.com/thekuwayama/ech_config/workflows/CI/badge.svg)](https://github.com/thekuwayama/ech_config/actions?workflow=CI)
 
 `ech_config` is Ruby implementation of [Encrypted ClientHello Configuration](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/).
@@ -9,12 +10,10 @@
 
 ## Installation
 
-You can install it the following.
+The gem is available at [rubygems.org](https://rubygems.org/gems/ech_config). You can install with:
 
 ```sh-session
-$ gem install specific_install
-
-$ gem specific_install -l https://github.com/thekuwayama/ech_config.git
+$ gem install ech_config
 ```
 
 
