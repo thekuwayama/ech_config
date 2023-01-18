@@ -64,7 +64,7 @@ class ECHConfig::ECHConfigContents
     i += 2
     raise ::ECHConfig::DecodeError if i + ex_len != octet.length
 
-    extensions = Extensions.store(octet)
+    extensions = Extensions.store(octet.slice(i, ex_len) || '')
     new(
       key_config,
       maximum_name_length,
