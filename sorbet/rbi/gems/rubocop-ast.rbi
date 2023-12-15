@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/rubocop-ast/all/rubocop-ast.rbi
 #
-# rubocop-ast-1.24.1
+# rubocop-ast-1.30.0
 
 module RuboCop
 end
@@ -249,6 +249,7 @@ class RuboCop::AST::NodePattern::Node < Parser::AST::Node
   def matches_within_set?; end
   def nb_captures; end
   def rest?; end
+  def source_range; end
   def variadic?; end
   def with(type: nil, children: nil, location: nil); end
   extend Forwardable
@@ -792,6 +793,7 @@ module RuboCop::AST::MethodDispatchNode
   def non_bare_access_modifier_declaration?(param0 = nil); end
   def receiver; end
   def safe_navigation?; end
+  def selector; end
   def self_receiver?; end
   def setter_method?; end
   def special_modifier?; end
@@ -872,8 +874,10 @@ class RuboCop::AST::BlockNode < RuboCop::AST::Node
   def braces?; end
   def closing_delimiter; end
   def delimiters; end
+  def first_argument; end
   def keywords?; end
   def lambda?; end
+  def last_argument; end
   def method_name; end
   def multiline?; end
   def numbered_arguments; end
@@ -1019,6 +1023,7 @@ end
 class RuboCop::AST::KeywordSplatNode < RuboCop::AST::Node
   def colon?; end
   def hash_rocket?; end
+  def kwsplat_type?; end
   def node_parts; end
   def operator; end
   include RuboCop::AST::HashElementNode

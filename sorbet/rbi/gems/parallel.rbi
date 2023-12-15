@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/parallel/all/parallel.rbi
 #
-# parallel-1.22.1
+# parallel-1.23.0
 
 module Parallel
   def self.add_progress_bar!(job_factory, options); end
@@ -18,6 +18,7 @@ module Parallel
   def self.each(array, options = nil, &block); end
   def self.each_with_index(array, options = nil, &block); end
   def self.extract_count_from_options(options); end
+  def self.filter_map(*args, &block); end
   def self.flat_map(*args, &block); end
   def self.in_processes(options = nil, &block); end
   def self.in_threads(options = nil); end
@@ -25,7 +26,9 @@ module Parallel
   def self.instrument_start(item, index, options); end
   def self.map(source, options = nil, &block); end
   def self.map_with_index(array, options = nil, &block); end
+  def self.physical_processor_count; end
   def self.process_incoming_jobs(read, write, job_factory, options, &block); end
+  def self.processor_count; end
   def self.replace_worker(job_factory, workers, index, options, blk); end
   def self.with_instrumentation(item, index, options); end
   def self.work_direct(job_factory, options, &block); end
@@ -35,11 +38,6 @@ module Parallel
   def self.worker(job_factory, options, &block); end
   def self.worker_number; end
   def self.worker_number=(worker_num); end
-  extend Parallel::ProcessorCount
-end
-module Parallel::ProcessorCount
-  def physical_processor_count; end
-  def processor_count; end
 end
 class Parallel::DeadWorker < StandardError
 end

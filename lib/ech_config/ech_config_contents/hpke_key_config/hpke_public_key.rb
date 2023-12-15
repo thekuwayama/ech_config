@@ -5,7 +5,6 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkePublicKey
   extend T::Sig
   attr_reader :opaque
 
-  sig { params(opaque: String).void }
   def initialize(opaque)
     @opaque = opaque
   end

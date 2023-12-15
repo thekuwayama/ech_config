@@ -38,10 +38,10 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig
     + @cipher_suites.map(&:encode).join.then { |s| [s.length].pack('n') + s }
   end
 
-  sig { params(octet: String).returns([T.attached_class, T.nilable(String)]) }
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/PerceivedComplexity
+  sig { params(octet: String).returns([T.attached_class, T.nilable(String)]) }
   def self.decode(octet)
     raise ::ECHConfig::DecodeError if octet.empty?
 

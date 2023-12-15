@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/rexml/all/rexml.rbi
 #
-# rexml-3.2.5
+# rexml-3.2.6
 
 module REXML
 end
@@ -166,8 +166,10 @@ class REXML::Entity < REXML::Child
   def name; end
   def ndata; end
   def normalized; end
+  def parent=(other); end
   def pubid; end
   def ref; end
+  def resolve_value; end
   def self.matches?(string); end
   def to_s; end
   def unnormalized; end
@@ -273,7 +275,7 @@ class REXML::Attribute
   def inspect; end
   def namespace(arg = nil); end
   def node_type; end
-  def normalized=(arg0); end
+  def normalized=(new_normalized); end
   def prefix; end
   def remove; end
   def to_s; end
@@ -312,14 +314,16 @@ class REXML::Parsers::XPathParser
   def RelativeLocationPath(path, parsed); end
   def UnaryExpr(path, parsed); end
   def UnionExpr(path, parsed); end
-  def abbreviate(path); end
-  def expand(path); end
+  def abbreviate(path_or_parsed); end
+  def expand(path_or_parsed); end
   def get_group(string); end
   def namespaces=(namespaces); end
   def parse(path); end
   def parse_args(string); end
+  def preciate_to_string(parsed, &block); end
   def predicate(path); end
-  def predicate_to_string(path, &block); end
+  def predicate_to_path(parsed, &block); end
+  def quote_literal(literal); end
   include REXML::XMLTokens
 end
 module REXML::DClonable

@@ -1,11 +1,10 @@
-# typed: true
+# typed: false
 # frozen_string_literal: true
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite::HpkeKdfId
   extend T::Sig
   attr_reader :uint16
 
-  sig { params(uint16: Integer).void }
   def initialize(uint16)
     @uint16 = uint16
   end
@@ -13,6 +12,11 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite::Hpk
   sig { returns(String) }
   def encode
     [@uint16].pack('n')
+  end
+
+  sig { params(other: T.self_type).returns(T::Boolean) }
+  def ==(other)
+    other.uint16 == @uint16
   end
 
   sig { params(octet: String).returns(T.attached_class) }

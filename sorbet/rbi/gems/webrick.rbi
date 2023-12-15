@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/webrick/all/webrick.rbi
 #
-# webrick-1.7.0
+# webrick-1.8.1
 
 module Errno
 end
@@ -381,6 +381,7 @@ class WEBrick::HTTPRequest
   def keep_alive?; end
   def meta_vars; end
   def parse(socket = nil); end
+  def parse_host_request_line(host); end
   def parse_query; end
   def parse_uri(str, scheme = nil); end
   def path; end
@@ -463,6 +464,9 @@ class WEBrick::HTTPResponse
   def status; end
   def status=(status); end
   def status_line; end
+  def upgrade!(protocol); end
+  def upgrade; end
+  def upgrade=(arg0); end
 end
 class WEBrick::HTTPResponse::InvalidHeader < StandardError
 end
@@ -529,6 +533,7 @@ end
 class WEBrick::HTTPServlet::ProcHandler < WEBrick::HTTPServlet::AbstractServlet
   def do_GET(request, response); end
   def do_POST(request, response); end
+  def do_PUT(request, response); end
   def get_instance(server, *options); end
   def initialize(proc); end
 end

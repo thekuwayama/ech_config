@@ -35,8 +35,8 @@ class ECHConfig
     @version + @echconfig_contents.encode.then { |s| [s.length].pack('n') + s }
   end
 
-  sig { params(octet: String).returns(T::Array[T.attached_class]) }
   # rubocop:disable Metrics/CyclomaticComplexity
+  sig { params(octet: String).returns(T::Array[T.attached_class]) }
   def self.decode_vectors(octet)
     i = 0
     echconfigs = []

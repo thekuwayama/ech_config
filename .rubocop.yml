@@ -1,4 +1,5 @@
 AllCops:
+  SuggestExtensions: false
   TargetRubyVersion: 2.7
 
 Style/ConditionalAssignment:

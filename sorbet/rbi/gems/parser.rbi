@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/parser/all/parser.rbi
 #
-# parser-3.2.0.0
+# parser-3.2.2.4
 
 module Parser
 end
@@ -516,7 +516,6 @@ class Parser::Lexer
   def advance; end
   def arg_or_cmdarg(cmd_state); end
   def check_ambiguous_slash(tm); end
-  def check_invalid_escapes(p); end
   def cmdarg; end
   def cmdarg=(arg0); end
   def cmdarg_stack; end
@@ -533,49 +532,31 @@ class Parser::Lexer
   def diagnostic(type, reason, arguments = nil, location = nil, highlights = nil); end
   def diagnostics; end
   def diagnostics=(arg0); end
-  def e_heredoc_nl(p); end
   def e_lbrace; end
   def emit(type, value = nil, s = nil, e = nil); end
-  def emit_character_constant; end
+  def emit_class_var(ts = nil, te = nil); end
   def emit_colon_with_digits(p, tm, diag_msg); end
   def emit_comment(s = nil, e = nil); end
   def emit_comment_from_range(p, pe); end
   def emit_do(do_block = nil); end
-  def emit_global_var; end
-  def emit_invalid_escapes?; end
+  def emit_global_var(ts = nil, te = nil); end
+  def emit_instance_var(ts = nil, te = nil); end
   def emit_rbrace_rparen_rbrack; end
   def emit_singleton_class; end
   def emit_table(table, s = nil, e = nil); end
-  def encode_escape(ord); end
-  def encode_escaped_char(p); end
   def encoding; end
-  def eof_codepoint?(point); end
-  def extend_interp_code(current_literal); end
-  def extend_interp_digit_var; end
-  def extend_interp_var(current_literal); end
-  def extend_string_eol_check_eof(current_literal, pe); end
-  def extend_string_eol_heredoc_intertwined(p); end
-  def extend_string_eol_heredoc_line; end
-  def extend_string_eol_words(current_literal, p); end
-  def extend_string_escaped; end
-  def extend_string_for_token_range(current_literal, string); end
-  def extend_string_slice_end(lookahead); end
   def force_utf32; end
   def force_utf32=(arg0); end
   def initialize(version); end
   def lambda_stack; end
-  def literal; end
-  def next_state_for_literal(literal); end
   def numeric_literal_int; end
+  def on_newline(p); end
   def paren_nest; end
   def pop_cmdarg; end
   def pop_cond; end
-  def pop_literal; end
   def push_cmdarg; end
   def push_cond; end
-  def push_literal(*args); end
   def range(s = nil, e = nil); end
-  def read_post_meta_or_ctrl_char(p); end
   def reset(reset_state = nil); end
   def self._lex_eof_trans; end
   def self._lex_eof_trans=(arg0); end
@@ -619,36 +600,18 @@ class Parser::Lexer
   def self.lex_en_expr_value=(arg0); end
   def self.lex_en_expr_variable; end
   def self.lex_en_expr_variable=(arg0); end
-  def self.lex_en_interp_backslash_delimited; end
-  def self.lex_en_interp_backslash_delimited=(arg0); end
-  def self.lex_en_interp_backslash_delimited_words; end
-  def self.lex_en_interp_backslash_delimited_words=(arg0); end
-  def self.lex_en_interp_string; end
-  def self.lex_en_interp_string=(arg0); end
-  def self.lex_en_interp_words; end
-  def self.lex_en_interp_words=(arg0); end
+  def self.lex_en_inside_string; end
+  def self.lex_en_inside_string=(arg0); end
   def self.lex_en_leading_dot; end
   def self.lex_en_leading_dot=(arg0); end
   def self.lex_en_line_begin; end
   def self.lex_en_line_begin=(arg0); end
   def self.lex_en_line_comment; end
   def self.lex_en_line_comment=(arg0); end
-  def self.lex_en_plain_backslash_delimited; end
-  def self.lex_en_plain_backslash_delimited=(arg0); end
-  def self.lex_en_plain_backslash_delimited_words; end
-  def self.lex_en_plain_backslash_delimited_words=(arg0); end
-  def self.lex_en_plain_string; end
-  def self.lex_en_plain_string=(arg0); end
-  def self.lex_en_plain_words; end
-  def self.lex_en_plain_words=(arg0); end
-  def self.lex_en_regexp_modifiers; end
-  def self.lex_en_regexp_modifiers=(arg0); end
   def self.lex_error; end
   def self.lex_error=(arg0); end
   def self.lex_start; end
   def self.lex_start=(arg0); end
-  def slash_c_char; end
-  def slash_m_char; end
   def source_buffer; end
   def source_buffer=(source_buffer); end
   def stack_pop; end
@@ -659,9 +622,102 @@ class Parser::Lexer
   def tok(s = nil, e = nil); end
   def tokens; end
   def tokens=(arg0); end
+  def version; end
+  def version?(*versions); end
+end
+class Parser::LexerStrings
+  def advance(p); end
+  def check_ambiguous_slash(tm); end
+  def check_invalid_escapes(p); end
+  def close_interp_on_current_literal(p); end
+  def cond; end
+  def continue_lexing(current_literal); end
+  def dedent_level; end
+  def diagnostic(type, reason, arguments = nil, location = nil, highlights = nil); end
+  def emit(type, value = nil, s = nil, e = nil); end
+  def emit_character_constant; end
+  def emit_interp_var(interp_var_kind); end
+  def emit_invalid_escapes?; end
+  def encode_escape(ord); end
+  def encode_escaped_char(p); end
+  def eof_codepoint?(point); end
+  def extend_interp_code(current_literal); end
+  def extend_interp_digit_var; end
+  def extend_interp_var(current_literal); end
+  def extend_string_eol_check_eof(current_literal, pe); end
+  def extend_string_eol_heredoc_intertwined(p); end
+  def extend_string_eol_heredoc_line; end
+  def extend_string_eol_words(current_literal, p); end
+  def extend_string_escaped; end
+  def extend_string_for_token_range(current_literal, string); end
+  def extend_string_slice_end(lookahead); end
+  def herebody_s; end
+  def herebody_s=(arg0); end
+  def initialize(lexer, version); end
+  def literal; end
+  def next_state_for_literal(literal); end
+  def on_newline(p); end
+  def pop_literal; end
+  def push_literal(*args); end
+  def range(s = nil, e = nil); end
+  def read_character_constant(p); end
+  def read_post_meta_or_ctrl_char(p); end
+  def reset; end
+  def self._lex_actions; end
+  def self._lex_actions=(arg0); end
+  def self._lex_eof_trans; end
+  def self._lex_eof_trans=(arg0); end
+  def self._lex_from_state_actions; end
+  def self._lex_from_state_actions=(arg0); end
+  def self._lex_index_offsets; end
+  def self._lex_index_offsets=(arg0); end
+  def self._lex_indicies; end
+  def self._lex_indicies=(arg0); end
+  def self._lex_key_spans; end
+  def self._lex_key_spans=(arg0); end
+  def self._lex_to_state_actions; end
+  def self._lex_to_state_actions=(arg0); end
+  def self._lex_trans_actions; end
+  def self._lex_trans_actions=(arg0); end
+  def self._lex_trans_keys; end
+  def self._lex_trans_keys=(arg0); end
+  def self._lex_trans_targs; end
+  def self._lex_trans_targs=(arg0); end
+  def self.lex_en_character; end
+  def self.lex_en_character=(arg0); end
+  def self.lex_en_interp_backslash_delimited; end
+  def self.lex_en_interp_backslash_delimited=(arg0); end
+  def self.lex_en_interp_backslash_delimited_words; end
+  def self.lex_en_interp_backslash_delimited_words=(arg0); end
+  def self.lex_en_interp_string; end
+  def self.lex_en_interp_string=(arg0); end
+  def self.lex_en_interp_words; end
+  def self.lex_en_interp_words=(arg0); end
+  def self.lex_en_plain_backslash_delimited; end
+  def self.lex_en_plain_backslash_delimited=(arg0); end
+  def self.lex_en_plain_backslash_delimited_words; end
+  def self.lex_en_plain_backslash_delimited_words=(arg0); end
+  def self.lex_en_plain_string; end
+  def self.lex_en_plain_string=(arg0); end
+  def self.lex_en_plain_words; end
+  def self.lex_en_plain_words=(arg0); end
+  def self.lex_en_regexp_modifiers; end
+  def self.lex_en_regexp_modifiers=(arg0); end
+  def self.lex_en_unknown; end
+  def self.lex_en_unknown=(arg0); end
+  def self.lex_error; end
+  def self.lex_error=(arg0); end
+  def self.lex_start; end
+  def self.lex_start=(arg0); end
+  def slash_c_char; end
+  def slash_m_char; end
+  def source_buffer; end
+  def source_buffer=(arg0); end
+  def source_pts; end
+  def source_pts=(arg0); end
+  def tok(s = nil, e = nil); end
   def unescape_char(p); end
   def unicode_points(p); end
-  def version; end
   def version?(*versions); end
 end
 class Parser::Lexer::Literal

@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/rake/all/rake.rbi
 #
-# rake-13.0.6
+# rake-13.1.0
 
 module Rake
   def self.add_rakelib(*files); end
@@ -409,6 +409,7 @@ class Rake::Application
   def init(app_name = nil, argv = nil); end
   def initialize; end
   def invoke_task(task_string); end
+  def load_debug_at_stop_feature; end
   def load_imports; end
   def load_rakefile; end
   def name; end

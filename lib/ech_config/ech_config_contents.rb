@@ -38,10 +38,10 @@ class ECHConfig::ECHConfigContents
     + @extensions.load.then { |s| [s.length].pack('n') + s }
   end
 
-  sig { params(octet: String).returns(T.attached_class) }
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/PerceivedComplexity
+  sig { params(octet: String).returns(T.attached_class) }
   def self.decode(octet)
     key_config, octet = HpkeKeyConfig.decode(octet)
     raise ::ECHConfig::DecodeError if octet.nil?

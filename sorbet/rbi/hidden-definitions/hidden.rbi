@@ -13,8 +13,6 @@ class Array
 
   def deconstruct(); end
 
-  def intersect?(arg); end
-
   def shelljoin(); end
 
   def to_h(); end
@@ -36,7 +34,6 @@ class BigDecimal
   def precision_scale(); end
 
   def scale(); end
-  EXCEPTION_NaN = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
@@ -3875,12 +3872,6 @@ end
 module GC
   def self.latest_compact_info(); end
 
-  def self.measure_total_time(); end
-
-  def self.measure_total_time=(flag); end
-
-  def self.total_time(); end
-
   def self.using_rvargc?(); end
 
   def self.verify_transient_heap_internal_consistency(); end
@@ -5025,6 +5016,18 @@ class JSON::Ext::Generator::State
   def escape_slash=(escape_slash); end
 
   def escape_slash?(); end
+
+  def script_safe(); end
+
+  def script_safe=(script_safe); end
+
+  def script_safe?(); end
+
+  def strict(); end
+
+  def strict=(strict); end
+
+  def strict?(); end
 end
 
 class JSON::Ext::Generator::State
@@ -5045,10 +5048,6 @@ module JSON
   def self.create_fast_state(); end
 
   def self.create_pretty_state(); end
-
-  def self.load_file(filespec, opts=T.unsafe(nil)); end
-
-  def self.load_file!(filespec, opts=T.unsafe(nil)); end
 end
 
 module Kernel
@@ -5139,10 +5138,6 @@ class Net::HTTP
 
   def ipaddr=(addr); end
 
-  def max_retries(); end
-
-  def max_retries=(retries); end
-
   def max_version(); end
 
   def max_version=(max_version); end
@@ -5162,12 +5157,16 @@ class Net::HTTP
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
+Net::HTTP::ProxyMod = Net::HTTP::ProxyDelta
+
 class Net::HTTPAlreadyReported
   HAS_BODY = ::T.let(nil, ::T.untyped)
 end
 
 class Net::HTTPAlreadyReported
 end
+
+Net::HTTPClientError::EXCEPTION_TYPE = Net::HTTPServerException
 
 Net::HTTPClientErrorCode = Net::HTTPClientError
 
@@ -5239,6 +5238,8 @@ Net::HTTPResponceReceiver = Net::HTTPResponse
 Net::HTTPResponseReceiver = Net::HTTPResponse
 
 Net::HTTPRetriableCode = Net::HTTPRedirection
+
+Net::HTTPServerError::EXCEPTION_TYPE = Net::HTTPFatalError
 
 Net::HTTPServerErrorCode = Net::HTTPServerError
 
@@ -5837,10 +5838,6 @@ end
 
 module OpenSSL
   def self.fips_mode(); end
-
-  def self.fixed_length_secure_compare(arg, arg1); end
-
-  def self.secure_compare(a, b); end
 end
 
 class OpenStruct
@@ -5995,14 +5992,12 @@ class Parser::Diagnostic
 end
 
 class Parser::Lexer
-  ESCAPES = ::T.let(nil, ::T.untyped)
   ESCAPE_WHITESPACE = ::T.let(nil, ::T.untyped)
   KEYWORDS = ::T.let(nil, ::T.untyped)
   KEYWORDS_BEGIN = ::T.let(nil, ::T.untyped)
   LEX_STATES = ::T.let(nil, ::T.untyped)
   PUNCTUATION = ::T.let(nil, ::T.untyped)
   PUNCTUATION_BEGIN = ::T.let(nil, ::T.untyped)
-  REGEXP_META_CHARACTERS = ::T.let(nil, ::T.untyped)
 end
 
 class Parser::Lexer::Dedenter
@@ -6012,6 +6007,13 @@ end
 class Parser::Lexer::Literal
   DELIMITERS = ::T.let(nil, ::T.untyped)
   TYPES = ::T.let(nil, ::T.untyped)
+end
+
+class Parser::LexerStrings
+  ESCAPES = ::T.let(nil, ::T.untyped)
+  ESCAPE_WHITESPACE = ::T.let(nil, ::T.untyped)
+  LEX_STATES = ::T.let(nil, ::T.untyped)
+  REGEXP_META_CHARACTERS = ::T.let(nil, ::T.untyped)
 end
 
 class Parser::MaxNumparamStack
@@ -6058,6 +6060,10 @@ class Parser::StaticEnvironment
   FORWARD_ARGS = ::T.let(nil, ::T.untyped)
 end
 
+class Pathname
+  def lutime(arg, arg1); end
+end
+
 class Proc
   def <<(arg); end
 
@@ -6078,6 +6084,11 @@ module Process
   def self._fork(); end
 end
 
+class ProgressBar::Base
+  RUNNING_AVERAGE_RATE_DEPRECATION_WARNING = ::T.let(nil, ::T.untyped)
+  SMOOTHING_DEPRECATION_WARNING = ::T.let(nil, ::T.untyped)
+end
+
 class ProgressBar::Components::Bar
   DEFAULT_PROGRESS_MARK = ::T.let(nil, ::T.untyped)
   DEFAULT_REMAINDER_MARK = ::T.let(nil, ::T.untyped)
@@ -6094,6 +6105,7 @@ class ProgressBar::Components::Time
   OOB_TIME_FORMATS = ::T.let(nil, ::T.untyped)
   OOB_UNKNOWN_TIME_TEXT = ::T.let(nil, ::T.untyped)
   TIME_FORMAT = ::T.let(nil, ::T.untyped)
+  WALL_CLOCK_FORMAT = ::T.let(nil, ::T.untyped)
 end
 
 class ProgressBar::Components::Title
@@ -6124,8 +6136,22 @@ end
 
 class ProgressBar::Progress
   DEFAULT_BEGINNING_POSITION = ::T.let(nil, ::T.untyped)
-  DEFAULT_SMOOTHING = ::T.let(nil, ::T.untyped)
   DEFAULT_TOTAL = ::T.let(nil, ::T.untyped)
+end
+
+class ProgressBar::Projector
+  NAME_TO_PROJECTOR_MAP = ::T.let(nil, ::T.untyped)
+end
+
+ProgressBar::Projector::DEFAULT_PROJECTOR = ProgressBar::Projectors::SmoothedAverage
+
+class ProgressBar::Projectors::SmoothedAverage
+  DEFAULT_BEGINNING_POSITION = ::T.let(nil, ::T.untyped)
+  DEFAULT_STRENGTH = ::T.let(nil, ::T.untyped)
+end
+
+module ProgressBar::Refinements::Enumerator
+  ARITY_ERROR_MESSAGE = ::T.let(nil, ::T.untyped)
 end
 
 class ProgressBar::Time
@@ -6174,8 +6200,6 @@ module Psych
   def self.remove_type(type_tag); end
 
   def self.safe_dump(o, io=T.unsafe(nil), options=T.unsafe(nil)); end
-
-  def self.safe_load_file(filename, **kwargs); end
 
   def self.unsafe_load(yaml, filename: T.unsafe(nil), fallback: T.unsafe(nil), symbolize_names: T.unsafe(nil), freeze: T.unsafe(nil)); end
 
@@ -6768,6 +6792,10 @@ module RDoc
   def self.home(); end
 end
 
+module REXML::Namespace
+  NAME_WITHOUT_NAMESPACE = ::T.let(nil, ::T.untyped)
+end
+
 class REXML::Parsers::BaseParser
   EXTERNAL_ID_PUBLIC = ::T.let(nil, ::T.untyped)
   EXTERNAL_ID_SYSTEM = ::T.let(nil, ::T.untyped)
@@ -7261,18 +7289,10 @@ module RbConfig
   def self.expand(val, config=T.unsafe(nil)); end
 
   def self.fire_update!(key, val, mkconf=T.unsafe(nil), conf=T.unsafe(nil)); end
-
-  def self.ruby(); end
 end
 
 module Readline
   def self.completion_quote_character(); end
-end
-
-class Refinement
-end
-
-class Refinement
 end
 
 class Regexp
@@ -7291,12 +7311,30 @@ Regexp::Expression::Anchor::EOS = Regexp::Expression::Anchor::EndOfString
 
 Regexp::Expression::Anchor::EOSobEOL = Regexp::Expression::Anchor::EndOfStringOrBeforeEndOfLine
 
-Regexp::Expression::CharacterSet::Intersection::OPERAND = Regexp::Expression::CharacterSet::IntersectedSequence
+Regexp::Expression::Backref = Regexp::Expression::Backreference
+
+Regexp::Expression::Escape = Regexp::Expression::EscapeSequence
 
 Regexp::Expression::MatchLength = Regexp::MatchLength
 
+Regexp::Expression::Nonposixclass = Regexp::Expression::PosixClass
+
+Regexp::Expression::Nonproperty = Regexp::Expression::UnicodeProperty
+
+Regexp::Expression::Posixclass = Regexp::Expression::PosixClass
+
+Regexp::Expression::Property = Regexp::Expression::UnicodeProperty
+
 class Regexp::Expression::Quantifier
   MODES = ::T.let(nil, ::T.untyped)
+end
+
+class Regexp::Expression::CharacterSet
+end
+
+Regexp::Expression::Set::IntersectedSequence = Regexp::Expression::CharacterSet::IntersectedSequence
+
+class Regexp::Expression::CharacterSet
 end
 
 class Regexp::Lexer
@@ -7311,6 +7349,8 @@ class Regexp::Parser
   VERSION = ::T.let(nil, ::T.untyped)
 end
 
+Regexp::Parser::UP = Regexp::Expression::UnicodeProperty
+
 Regexp::Parser::UPTokens = Regexp::Syntax::Token::UnicodeProperty
 
 module Regexp::Syntax
@@ -7319,10 +7359,17 @@ module Regexp::Syntax
   VERSION_REGEXP = ::T.let(nil, ::T.untyped)
 end
 
+Regexp::Syntax::CURRENT = Regexp::Syntax::V3_1_0
+
 module Regexp::Syntax::Token
   All = ::T.let(nil, ::T.untyped)
   Map = ::T.let(nil, ::T.untyped)
   Types = ::T.let(nil, ::T.untyped)
+end
+
+module Regexp::Syntax::Token::Alternation
+  All = ::T.let(nil, ::T.untyped)
+  Type = ::T.let(nil, ::T.untyped)
 end
 
 module Regexp::Syntax::Token::Anchor
@@ -7340,6 +7387,8 @@ module Regexp::Syntax::Token::Assertion
   Lookbehind = ::T.let(nil, ::T.untyped)
   Type = ::T.let(nil, ::T.untyped)
 end
+
+Regexp::Syntax::Token::Backref = Regexp::Syntax::Token::Backreference
 
 module Regexp::Syntax::Token::Backreference
   All = ::T.let(nil, ::T.untyped)
@@ -7389,6 +7438,8 @@ module Regexp::Syntax::Token::Escape
   Unicode = ::T.let(nil, ::T.untyped)
 end
 
+Regexp::Syntax::Token::EscapeSequence = Regexp::Syntax::Token::Escape
+
 module Regexp::Syntax::Token::FreeSpace
   All = ::T.let(nil, ::T.untyped)
   Type = ::T.let(nil, ::T.untyped)
@@ -7420,6 +7471,7 @@ end
 
 module Regexp::Syntax::Token::Meta
   All = ::T.let(nil, ::T.untyped)
+  Alternation = ::T.let(nil, ::T.untyped)
   Basic = ::T.let(nil, ::T.untyped)
   Extended = ::T.let(nil, ::T.untyped)
   Type = ::T.let(nil, ::T.untyped)
@@ -7433,6 +7485,8 @@ module Regexp::Syntax::Token::PosixClass
   Type = ::T.let(nil, ::T.untyped)
 end
 
+Regexp::Syntax::Token::Property = Regexp::Syntax::Token::UnicodeProperty
+
 module Regexp::Syntax::Token::Quantifier
   All = ::T.let(nil, ::T.untyped)
   Greedy = ::T.let(nil, ::T.untyped)
@@ -7445,6 +7499,8 @@ module Regexp::Syntax::Token::Quantifier
   Type = ::T.let(nil, ::T.untyped)
   V1_8_6 = ::T.let(nil, ::T.untyped)
 end
+
+Regexp::Syntax::Token::Set = Regexp::Syntax::Token::CharacterSet
 
 module Regexp::Syntax::Token::SubexpressionCall
   All = ::T.let(nil, ::T.untyped)
@@ -7475,6 +7531,7 @@ module Regexp::Syntax::Token::UnicodeProperty
   Derived_V2_5_0 = ::T.let(nil, ::T.untyped)
   Emoji = ::T.let(nil, ::T.untyped)
   Emoji_V2_5_0 = ::T.let(nil, ::T.untyped)
+  Emoji_V2_6_0 = ::T.let(nil, ::T.untyped)
   NonType = ::T.let(nil, ::T.untyped)
   POSIX = ::T.let(nil, ::T.untyped)
   Script = ::T.let(nil, ::T.untyped)
@@ -7743,8 +7800,6 @@ class Ripper
   EXPR_MID = ::T.let(nil, ::T.untyped)
   EXPR_NONE = ::T.let(nil, ::T.untyped)
   EXPR_VALUE = ::T.let(nil, ::T.untyped)
-  PARSER_EVENT_TABLE = ::T.let(nil, ::T.untyped)
-  SCANNER_EVENT_TABLE = ::T.let(nil, ::T.untyped)
   Version = ::T.let(nil, ::T.untyped)
 end
 
@@ -8441,7 +8496,7 @@ module RuboCop::AST::NodePattern::Sets
   SET_1_1 = ::T.let(nil, ::T.untyped)
   SET_ABSTRACT_OVERRIDE_OVERRIDABLE_ETC = ::T.let(nil, ::T.untyped)
   SET_ADD_DEPENDENCY_ADD_RUNTIME_DEPENDENCY_ADD_DEVELOPMENT_DEPENDENCY = ::T.let(nil, ::T.untyped)
-  SET_ANY_ALL_NORETURN_ETC = ::T.let(nil, ::T.untyped)
+  SET_ALL_ANY_CLASS_OF_ETC = ::T.let(nil, ::T.untyped)
   SET_ANY_EMPTY = ::T.let(nil, ::T.untyped)
   SET_ATTR_READER_ATTR_WRITER_ATTR_ACCESSOR = ::T.let(nil, ::T.untyped)
   SET_ATTR_READER_ATTR_WRITER_ATTR_ACCESSOR_ATTR = ::T.let(nil, ::T.untyped)
@@ -8491,17 +8546,19 @@ module RuboCop::AST::NodePattern::Sets
   SET_REQUIRE_REQUIRE_RELATIVE = ::T.let(nil, ::T.untyped)
   SET_SELECT_SELECT = ::T.let(nil, ::T.untyped)
   SET_SEND_PUBLIC_SEND___SEND__ = ::T.let(nil, ::T.untyped)
+  SET_SIG_HELPERS = ::T.let(nil, ::T.untyped)
   SET_SORT_BY_SORT = ::T.let(nil, ::T.untyped)
   SET_SPAWN_SYSTEM = ::T.let(nil, ::T.untyped)
   SET_SPRINTF_FORMAT = ::T.let(nil, ::T.untyped)
   SET_STRUCT_CLASS = ::T.let(nil, ::T.untyped)
+  SET_STRUCT_IMMUTABLESTRUCT = ::T.let(nil, ::T.untyped)
+  SET_STRUCT_IMMUTABLESTRUCT_INEXACTSTRUCT = ::T.let(nil, ::T.untyped)
   SET_SUCC_PRED_NEXT = ::T.let(nil, ::T.untyped)
   SET_TEMPFILE_STRINGIO = ::T.let(nil, ::T.untyped)
   SET_TO_ENUM_ENUM_FOR = ::T.let(nil, ::T.untyped)
   SET_TO_H_TO_HASH = ::T.let(nil, ::T.untyped)
   SET_TO_I_TO_F_TO_C_TO_R = ::T.let(nil, ::T.untyped)
   SET_TRUE_FALSE = ::T.let(nil, ::T.untyped)
-  SET_TYPE_TEMPLATE_TYPE_MEMBER = ::T.let(nil, ::T.untyped)
   SET_ZERO_POSITIVE_NEGATIVE = ::T.let(nil, ::T.untyped)
   SET__ = ::T.let(nil, ::T.untyped)
   SET__AT_SLICE = ::T.let(nil, ::T.untyped)
@@ -10041,8 +10098,26 @@ class RuboCop::Cop::Severity
   NAMES = ::T.let(nil, ::T.untyped)
 end
 
+class RuboCop::Cop::Sorbet::AllowIncompatibleOverride
+  MSG = ::T.let(nil, ::T.untyped)
+  RESTRICT_ON_SEND = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::BindingConstantWithoutTypeAlias
+  MSG = ::T.let(nil, ::T.untyped)
+  WITHOUT_BLOCK_MSG = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::BuggyObsoleteStrictMemoization
+  MSG = ::T.let(nil, ::T.untyped)
+end
+
 class RuboCop::Cop::Sorbet::CallbackConditionalsBinding
   CALLBACKS = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::EmptyLineAfterSig
+  MSG = ::T.let(nil, ::T.untyped)
 end
 
 class RuboCop::Cop::Sorbet::EnforceSigilOrder
@@ -10060,9 +10135,30 @@ end
 
 class RuboCop::Cop::Sorbet::ForbidIncludeConstLiteral
   MSG = ::T.let(nil, ::T.untyped)
+  RESTRICT_ON_SEND = ::T.let(nil, ::T.untyped)
 end
 
 class RuboCop::Cop::Sorbet::ForbidSuperclassConstLiteral
+  MSG = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::ForbidTStruct
+  MSG_PROPS = ::T.let(nil, ::T.untyped)
+  MSG_STRUCT = ::T.let(nil, ::T.untyped)
+  RESTRICT_ON_SEND = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::ForbidTUnsafe
+  MSG = ::T.let(nil, ::T.untyped)
+  RESTRICT_ON_SEND = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::ForbidTUntyped
+  MSG = ::T.let(nil, ::T.untyped)
+  RESTRICT_ON_SEND = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::ForbidTypeAliasedShapes
   MSG = ::T.let(nil, ::T.untyped)
 end
 
@@ -10070,8 +10166,23 @@ class RuboCop::Cop::Sorbet::ForbidUntypedStructProps
   MSG = ::T.let(nil, ::T.untyped)
 end
 
+class RuboCop::Cop::Sorbet::ImplicitConversionMethod
+  IMPLICIT_CONVERSION_METHODS = ::T.let(nil, ::T.untyped)
+  MSG = ::T.let(nil, ::T.untyped)
+  RESTRICT_ON_SEND = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::ObsoleteStrictMemoization
+  MSG = ::T.let(nil, ::T.untyped)
+end
+
 class RuboCop::Cop::Sorbet::OneAncestorPerLine
   MSG = ::T.let(nil, ::T.untyped)
+end
+
+class RuboCop::Cop::Sorbet::RedundantExtendTSig
+  MSG = ::T.let(nil, ::T.untyped)
+  RESTRICT_ON_SEND = ::T.let(nil, ::T.untyped)
 end
 
 class RuboCop::Cop::Sorbet::SignatureBuildOrder
@@ -11894,10 +12005,6 @@ class Struct
   def self.new(*arg); end
 end
 
-class Symbol
-  def name(); end
-end
-
 class Tempfile
   def _close(); end
   RUBYGEMS_ACTIVATION_MONITOR = ::T.let(nil, ::T.untyped)
@@ -11952,6 +12059,7 @@ end
 
 module URI
   include ::URI::RFC2396_REGEXP
+  TBLENCURICOMP_ = ::T.let(nil, ::T.untyped)
 end
 
 class URI::FTP
@@ -11968,6 +12076,12 @@ class URI::File
   def set_userinfo(v); end
   COMPONENT = ::T.let(nil, ::T.untyped)
   DEFAULT_PORT = ::T.let(nil, ::T.untyped)
+end
+
+class URI::Generic
+  def decoded_password(); end
+
+  def decoded_user(); end
 end
 
 class URI::HTTP
@@ -12033,16 +12147,16 @@ module URI::Util
   def self.make_components_hash(klass, array_hash); end
 end
 
-class URI::WS
-  def request_uri(); end
-  COMPONENT = ::T.let(nil, ::T.untyped)
+class URI::WSS
   DEFAULT_PORT = ::T.let(nil, ::T.untyped)
 end
 
-class URI::WS
+class URI::WSS
 end
 
 module URI
+  def self.decode_uri_component(str, enc=T.unsafe(nil)); end
+
   def self.for(scheme, *arguments, default: T.unsafe(nil)); end
 
   def self.get_encoding(label); end

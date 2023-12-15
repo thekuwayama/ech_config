@@ -7,7 +7,7 @@
 #
 #   https://github.com/sorbet/sorbet-typed/new/master?filename=lib/ech_config/all/ech_config.rbi
 #
-# ech_config-0.0.1
+# ech_config-0.0.2
 
 class ECHConfig
   def echconfig_contents; end

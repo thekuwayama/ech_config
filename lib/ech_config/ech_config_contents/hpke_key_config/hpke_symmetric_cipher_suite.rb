@@ -1,4 +1,4 @@
-# typed: true
+# typed: false
 # frozen_string_literal: true
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite
@@ -12,7 +12,6 @@ Dir["#{File.dirname(__FILE__)}/hpke_symmetric_cipher_suite/*.rb"]
 class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite
   attr_reader :kdf_id, :aead_id
 
-  sig { params(kdf_id: HpkeKdfId, aead_id: HpkeAeadId).void }
   def initialize(kdf_id, aead_id)
     @kdf_id = kdf_id
     @aead_id = aead_id
@@ -21,6 +20,11 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite
   sig { returns(String) }
   def encode
     @kdf_id.encode + @aead_id.encode
+  end
+
+  sig { params(other: T.self_type).returns(T::Boolean) }
+  def ==(other)
+    other.kdf_id == @kdf_id && other.aead_id == @aead_id
   end
 
   sig { params(octet: String).returns(T::Array[T.attached_class]) }

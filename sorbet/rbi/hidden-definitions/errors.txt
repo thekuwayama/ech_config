@@ -39,18 +39,6 @@
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                       ^^^^^^^^^^
-# wrong constant name <RESERVED_1>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
-# wrong constant name <RESERVED_2>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
-# wrong constant name <RESERVED_3>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
 # wrong constant name <TypeAlias>
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -75,14 +63,6 @@
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                       ^^^^^^^^^^
-# wrong constant name <top>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
-# wrong constant name <top>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
 # wrong constant name connect_internal
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -92,10 +72,6 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # wrong constant name deconstruct
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name intersect?
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -111,10 +87,6 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# wrong constant name <Class:BasicObject>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
 # uninitialized constant Benchmark
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -5245,7 +5217,7 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Bundler::URI::LDAPS::SCOPE_ONE
+# Did you mean?  Bundler::URI::LDAPS::SCOPE_SUB
 # uninitialized constant Bundler::URI::LDAPS::SCOPE_BASE
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -7454,28 +7426,28 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_LONG
+# Did you mean?  Fiddle::Importer::TYPE_VOID
 # uninitialized constant Fiddle::Importer::TYPE_FLOAT
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # Did you mean?  Fiddle::Importer::TYPE_LONG
 #                Fiddle::TYPE_LONG
-#                Fiddle::TYPE_SHORT
 #                Fiddle::Importer::TYPE_SHORT
+#                Fiddle::TYPE_SHORT
 # uninitialized constant Fiddle::Importer::TYPE_INT
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_LONG
+# Did you mean?  Fiddle::TYPE_VOID
 # uninitialized constant Fiddle::Importer::TYPE_INT16_T
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # Did you mean?  Fiddle::TYPE_INT64_T
 #                Fiddle::Importer::TYPE_INT64_T
-#                Fiddle::TYPE_INT8_T
 #                Fiddle::Importer::TYPE_INT8_T
+#                Fiddle::TYPE_INT8_T
 #                Fiddle::TYPE_INT32_T
 #                Fiddle::Importer::TYPE_INT32_T
 #                Fiddle::TYPE_INTPTR_T
@@ -7484,11 +7456,11 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::TYPE_INT8_T
-#                Fiddle::Importer::TYPE_INT8_T
+# Did you mean?  Fiddle::Importer::TYPE_INT8_T
+#                Fiddle::TYPE_INT8_T
 #                Fiddle::Importer::TYPE_INT64_T
-#                Fiddle::TYPE_INT16_T
 #                Fiddle::Importer::TYPE_INT16_T
+#                Fiddle::TYPE_INT16_T
 #                Fiddle::TYPE_INT64_T
 #                Fiddle::TYPE_INTPTR_T
 #                Fiddle::Importer::TYPE_INTPTR_T
@@ -7498,22 +7470,22 @@
 #                         ^^^^^^^^^^
 # Did you mean?  Fiddle::TYPE_INT16_T
 #                Fiddle::Importer::TYPE_INT16_T
-#                Fiddle::TYPE_INT8_T
 #                Fiddle::Importer::TYPE_INT8_T
+#                Fiddle::TYPE_INT8_T
 #                Fiddle::Importer::TYPE_INT32_T
 #                Fiddle::TYPE_INT32_T
-#                Fiddle::TYPE_INTPTR_T
 #                Fiddle::Importer::TYPE_INTPTR_T
+#                Fiddle::TYPE_INTPTR_T
 # uninitialized constant Fiddle::Importer::TYPE_INT8_T
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::TYPE_INT64_T
-#                Fiddle::TYPE_INT16_T
-#                Fiddle::Importer::TYPE_INT64_T
+# Did you mean?  Fiddle::Importer::TYPE_INT64_T
 #                Fiddle::Importer::TYPE_INT32_T
 #                Fiddle::Importer::TYPE_INT16_T
+#                Fiddle::TYPE_INT16_T
 #                Fiddle::TYPE_INT32_T
+#                Fiddle::TYPE_INT64_T
 #                Fiddle::Importer::TYPE_INTPTR_T
 #                Fiddle::TYPE_INTPTR_T
 #                Fiddle::TYPE_INT
@@ -7523,11 +7495,11 @@
 #                         ^^^^^^^^^^
 # Did you mean?  Fiddle::TYPE_INT8_T
 #                Fiddle::Importer::TYPE_INT8_T
-#                Fiddle::TYPE_INT64_T
 #                Fiddle::TYPE_INT16_T
 #                Fiddle::Importer::TYPE_INT64_T
 #                Fiddle::Importer::TYPE_INT32_T
 #                Fiddle::Importer::TYPE_INT16_T
+#                Fiddle::TYPE_INT64_T
 #                Fiddle::TYPE_INT32_T
 #                Fiddle::TYPE_UINTPTR_T
 #                Fiddle::Importer::TYPE_UINTPTR_T
@@ -7535,12 +7507,12 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_INT
-#                Fiddle::TYPE_INT
+# Did you mean?  Fiddle::TYPE_INT
+#                Fiddle::Importer::TYPE_INT
 #                Fiddle::Importer::TYPE_VOID
 #                Fiddle::TYPE_VOID
-#                Fiddle::TYPE_FLOAT
 #                Fiddle::Importer::TYPE_FLOAT
+#                Fiddle::TYPE_FLOAT
 # uninitialized constant Fiddle::Importer::TYPE_LONG_LONG
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -7555,22 +7527,22 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_CHAR
-#                Fiddle::TYPE_CHAR
+# Did you mean?  Fiddle::TYPE_CHAR
+#                Fiddle::Importer::TYPE_CHAR
 #                Fiddle::Importer::TYPE_FLOAT
 #                Fiddle::TYPE_FLOAT
 # uninitialized constant Fiddle::Importer::TYPE_SIZE_T
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_SSIZE_T
-#                Fiddle::TYPE_SSIZE_T
+# Did you mean?  Fiddle::TYPE_SSIZE_T
+#                Fiddle::Importer::TYPE_SSIZE_T
 # uninitialized constant Fiddle::Importer::TYPE_SSIZE_T
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_SIZE_T
-#                Fiddle::TYPE_SIZE_T
+# Did you mean?  Fiddle::TYPE_SIZE_T
+#                Fiddle::Importer::TYPE_SIZE_T
 # uninitialized constant Fiddle::Importer::TYPE_UINTPTR_T
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -7578,10 +7550,10 @@
 # Did you mean?  Fiddle::TYPE_INT8_T
 #                Fiddle::Importer::TYPE_INT8_T
 #                Fiddle::TYPE_INT16_T
-#                Fiddle::TYPE_INT64_T
 #                Fiddle::Importer::TYPE_INT64_T
 #                Fiddle::Importer::TYPE_INT32_T
 #                Fiddle::Importer::TYPE_INT16_T
+#                Fiddle::TYPE_INT64_T
 #                Fiddle::TYPE_INT32_T
 #                Fiddle::TYPE_INTPTR_T
 #                Fiddle::Importer::TYPE_INTPTR_T
@@ -7589,15 +7561,15 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_INT
+# Did you mean?  Fiddle::TYPE_INT
 # uninitialized constant Fiddle::Importer::TYPE_VOID
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  Fiddle::Importer::TYPE_LONG
-#                Fiddle::TYPE_LONG
-#                Fiddle::Importer::TYPE_VOIDP
+# Did you mean?  Fiddle::TYPE_LONG
+#                Fiddle::Importer::TYPE_LONG
 #                Fiddle::TYPE_VOIDP
+#                Fiddle::Importer::TYPE_VOIDP
 # uninitialized constant Fiddle::Importer::TYPE_VOIDP
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -7858,18 +7830,6 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # wrong constant name latest_compact_info
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name measure_total_time
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name measure_total_time=
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name total_time
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -9798,6 +9758,30 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# wrong constant name script_safe
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# wrong constant name script_safe=
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# wrong constant name script_safe?
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# wrong constant name strict
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# wrong constant name strict=
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# wrong constant name strict?
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
 # wrong constant name from_state
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -9811,14 +9795,6 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # wrong constant name create_pretty_state
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name load_file
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name load_file!
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -10077,14 +10053,6 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # wrong constant name ipaddr=
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name max_retries
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name max_retries=
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -10404,10 +10372,6 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# wrong constant name <Class:Object>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
 # uninitialized constant Observable
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -11060,14 +11024,6 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# wrong constant name fixed_length_secure_compare
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name secure_compare
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
 # wrong constant name __id__!
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -11379,6 +11335,10 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# wrong constant name lutime
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
 # uninitialized constant Prime
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -11578,10 +11538,6 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # wrong constant name safe_dump
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
-# wrong constant name safe_load_file
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -12728,6 +12684,50 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# uninitialized constant REXML::Namespace::NAME
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant REXML::Namespace::NAMECHAR
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  REXML::Namespace::NAME_CHAR
+# uninitialized constant REXML::Namespace::NAME_CHAR
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  REXML::Namespace::NAME_STR
+#                REXML::Namespace::NAMECHAR
+# uninitialized constant REXML::Namespace::NAME_START_CHAR
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant REXML::Namespace::NAME_STR
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  REXML::Namespace::NCNAME_STR
+# uninitialized constant REXML::Namespace::NCNAME_STR
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  REXML::Namespace::NAME_STR
+# uninitialized constant REXML::Namespace::NMTOKEN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  REXML::Namespace::NMTOKENS
+# uninitialized constant REXML::Namespace::NMTOKENS
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  REXML::XMLTokens
+# uninitialized constant REXML::Namespace::REFERENCE
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  REXML::ReferenceWriter
 # uninitialized constant REXML::Parsers::XPathParser::NAME
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -13110,18 +13110,18 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# wrong constant name ruby
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
 # wrong constant name completion_quote_character
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# wrong constant name <static-init>
+# uninitialized constant Regexp::TimeoutError
 # 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
+#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                       ^^^^^^^^^^
+# uninitialized constant Regexp::TimeoutError
+# 
+#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                       ^^^^^^^^^^
 # wrong constant name extract_resources
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -13344,8 +13344,8 @@
 # Did you mean?  Ripper::Lexer::EXPR_ARG
 #                Ripper::EXPR_ARG
 #                Ripper::EXPR_END
-#                Ripper::EXPR_ENDFN
 #                Ripper::Lexer::EXPR_ENDFN
+#                Ripper::EXPR_ENDFN
 #                Ripper::Lexer::EXPR_CMDARG
 #                Ripper::EXPR_CMDARG
 #                Ripper::Lexer::EXPR_END_ANY
@@ -13355,10 +13355,10 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # Did you mean?  Ripper::EXPR_END
-#                Ripper::Lexer::EXPR_ENDARG
 #                Ripper::EXPR_ENDARG
-#                Ripper::EXPR_END_ANY
+#                Ripper::Lexer::EXPR_ENDARG
 #                Ripper::Lexer::EXPR_END_ANY
+#                Ripper::EXPR_END_ANY
 # uninitialized constant Ripper::Lexer::EXPR_END_ANY
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -13637,8 +13637,8 @@
 # Did you mean?  Ripper::SexpBuilder::EXPR_ARG
 #                Ripper::EXPR_ARG
 #                Ripper::EXPR_END
-#                Ripper::EXPR_ENDFN
 #                Ripper::SexpBuilder::EXPR_ENDFN
+#                Ripper::EXPR_ENDFN
 #                Ripper::SexpBuilder::EXPR_CMDARG
 #                Ripper::EXPR_CMDARG
 #                Ripper::SexpBuilder::EXPR_END_ANY
@@ -13648,10 +13648,10 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # Did you mean?  Ripper::EXPR_END
-#                Ripper::SexpBuilder::EXPR_ENDARG
 #                Ripper::EXPR_ENDARG
-#                Ripper::EXPR_END_ANY
+#                Ripper::SexpBuilder::EXPR_ENDARG
 #                Ripper::SexpBuilder::EXPR_END_ANY
+#                Ripper::EXPR_END_ANY
 # uninitialized constant Ripper::SexpBuilder::EXPR_END_ANY
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -18606,6 +18606,46 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::AllowIncompatibleOverride::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::AllowIncompatibleOverride::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BindingConstantWithoutTypeAlias::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BindingConstantWithoutTypeAlias::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BindingConstantWithoutTypeAlias::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BuggyObsoleteStrictMemoization::BYTE_ORDER_MARK
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BuggyObsoleteStrictMemoization::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BuggyObsoleteStrictMemoization::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BuggyObsoleteStrictMemoization::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::BuggyObsoleteStrictMemoization::SPACE
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
 # uninitialized constant RuboCop::Cop::Sorbet::CallbackConditionalsBinding::HIDDEN_FILE_PATTERN
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -18615,6 +18655,22 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # uninitialized constant RuboCop::Cop::Sorbet::CallbackConditionalsBinding::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EmptyLineAfterSig::BYTE_ORDER_MARK
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EmptyLineAfterSig::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EmptyLineAfterSig::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::EmptyLineAfterSig::RESTRICT_ON_SEND
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -18663,10 +18719,6 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant RuboCop::Cop::Sorbet::ForbidIncludeConstLiteral::RESTRICT_ON_SEND
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
 # uninitialized constant RuboCop::Cop::Sorbet::ForbidSuperclassConstLiteral::HIDDEN_FILE_PATTERN
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -18676,6 +18728,50 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # uninitialized constant RuboCop::Cop::Sorbet::ForbidSuperclassConstLiteral::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTStruct::BYTE_ORDER_MARK
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTStruct::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTStruct::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTStruct::SPACE
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTUnsafe::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTUnsafe::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTUntyped::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTUntyped::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTypeAliasedShapes::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTypeAliasedShapes::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ForbidTypeAliasedShapes::RESTRICT_ON_SEND
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -18691,6 +18787,34 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ImplicitConversionMethod::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ImplicitConversionMethod::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ObsoleteStrictMemoization::BYTE_ORDER_MARK
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ObsoleteStrictMemoization::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ObsoleteStrictMemoization::LITERAL_REGEX
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ObsoleteStrictMemoization::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::ObsoleteStrictMemoization::SPACE
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
 # uninitialized constant RuboCop::Cop::Sorbet::OneAncestorPerLine::HIDDEN_FILE_PATTERN
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -18700,6 +18824,18 @@
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # uninitialized constant RuboCop::Cop::Sorbet::OneAncestorPerLine::RESTRICT_ON_SEND
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::RedundantExtendTSig::BYTE_ORDER_MARK
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::RedundantExtendTSig::HIDDEN_FILE_PATTERN
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant RuboCop::Cop::Sorbet::RedundantExtendTSig::LITERAL_REGEX
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
@@ -22326,14 +22462,6 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# wrong constant name <Class:Struct>
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
-# wrong constant name name
-# 
-#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                         ^^^^^^^^^^
 # uninitialized constant Sync
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -22355,6 +22483,18 @@
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                       ^^^^^^^^^^
 # uninitialized constant Syslog
+# 
+#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                       ^^^^^^^^^^
+# wrong constant name <Class:T>
+# 
+#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                       ^^^^^^^^^^
+# wrong constant name T.anything
+# 
+#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                       ^^^^^^^^^^
+# wrong constant name T.anything
 # 
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                       ^^^^^^^^^^
@@ -22452,20 +22592,10 @@
 #       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                       ^^^^^^^^^^
 # Did you mean?  TracePoint
-# wrong constant name <Class:WS>
+# wrong constant name <Class:WSS>
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::Escape
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
-# Did you mean?  URI::ESCAPED
-# uninitialized constant URI::Escape
-# 
-#       my_klass = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
-#                       ^^^^^^^^^^
-# Did you mean?  URI::ESCAPED
 # wrong constant name new2
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -22547,11 +22677,19 @@
 #                         ^^^^^^^^^^
 # Did you mean?  URI::File::TBLENCWWWCOMP_
 #                URI::TBLENCWWWCOMP_
+# uninitialized constant URI::File::TBLENCURICOMP_
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  URI::File::TBLENCWWWCOMP_
+#                URI::TBLENCWWWCOMP_
 # uninitialized constant URI::File::TBLENCWWWCOMP_
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::File::TBLDECWWWCOMP_
+# Did you mean?  URI::File::TBLENCURICOMP_
+#                URI::File::TBLDECWWWCOMP_
+#                URI::TBLENCURICOMP_
 #                URI::TBLDECWWWCOMP_
 # uninitialized constant URI::File::UNSAFE
 # 
@@ -22599,6 +22737,26 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# uninitialized constant URI::Generic::TBLENCURICOMP_
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  URI::Generic::TBLENCWWWCOMP_
+#                URI::TBLENCWWWCOMP_
+# wrong constant name decoded_password
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# wrong constant name decoded_user
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# uninitialized constant URI::HTTP::TBLENCURICOMP_
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  URI::HTTP::TBLENCWWWCOMP_
+#                URI::TBLENCWWWCOMP_
 # wrong constant name authority
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -22607,6 +22765,12 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# uninitialized constant URI::LDAP::TBLENCURICOMP_
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  URI::LDAP::TBLENCWWWCOMP_
+#                URI::TBLENCWWWCOMP_
 # wrong constant name attributes
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -22671,6 +22835,12 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
+# uninitialized constant URI::MailTo::TBLENCURICOMP_
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  URI::MailTo::TBLENCWWWCOMP_
+#                URI::TBLENCWWWCOMP_
 # wrong constant name initialize
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
@@ -22699,124 +22869,137 @@
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::ABS_PATH
+# uninitialized constant URI::WSS::ABS_PATH
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::ABS_URI
+# uninitialized constant URI::WSS::ABS_URI
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::WS::ABS_URI_REF
-# uninitialized constant URI::WS::ABS_URI_REF
+# Did you mean?  URI::WSS::ABS_URI_REF
+# uninitialized constant URI::WSS::ABS_URI_REF
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::DEFAULT_PARSER
+# uninitialized constant URI::WSS::COMPONENT
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::WS::DEFAULT_PORT
-# uninitialized constant URI::WS::ESCAPED
+# Did you mean?  Complex
+# uninitialized constant URI::WSS::DEFAULT_PARSER
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::FRAGMENT
+# Did you mean?  URI::WSS::DEFAULT_PORT
+# uninitialized constant URI::WSS::ESCAPED
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::HOST
+# uninitialized constant URI::WSS::FRAGMENT
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::OPAQUE
+# uninitialized constant URI::WSS::HOST
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::PORT
+# uninitialized constant URI::WSS::OPAQUE
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::QUERY
+# uninitialized constant URI::WSS::PORT
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::REGISTRY
+# uninitialized constant URI::WSS::QUERY
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::REL_PATH
+# uninitialized constant URI::WSS::REGISTRY
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::REL_URI
+# uninitialized constant URI::WSS::REL_PATH
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::WS::REL_URI_REF
-# uninitialized constant URI::WS::REL_URI_REF
+# uninitialized constant URI::WSS::REL_URI
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::RFC3986_PARSER
+# Did you mean?  URI::WSS::REL_URI_REF
+# uninitialized constant URI::WSS::REL_URI_REF
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::WS::RFC3986_Parser
+# uninitialized constant URI::WSS::RFC3986_PARSER
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  URI::WSS::RFC3986_Parser
 #                URI::RFC3986_Parser
-#                URI::WS::RFC2396_Parser
+#                URI::WSS::RFC2396_Parser
 #                URI::RFC2396_Parser
-# uninitialized constant URI::WS::SCHEME
+# uninitialized constant URI::WSS::SCHEME
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::TBLDECWWWCOMP_
+# uninitialized constant URI::WSS::TBLDECWWWCOMP_
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::WS::TBLENCWWWCOMP_
+# Did you mean?  URI::WSS::TBLENCWWWCOMP_
 #                URI::TBLENCWWWCOMP_
-# uninitialized constant URI::WS::TBLENCWWWCOMP_
+# uninitialized constant URI::WSS::TBLENCURICOMP_
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::WS::TBLDECWWWCOMP_
+# Did you mean?  URI::WSS::TBLENCWWWCOMP_
+#                URI::TBLENCWWWCOMP_
+# uninitialized constant URI::WSS::TBLENCWWWCOMP_
+# 
+#         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
+#                         ^^^^^^^^^^
+# Did you mean?  URI::WSS::TBLENCURICOMP_
+#                URI::WSS::TBLDECWWWCOMP_
+#                URI::TBLENCURICOMP_
 #                URI::TBLDECWWWCOMP_
-# uninitialized constant URI::WS::UNSAFE
+# uninitialized constant URI::WSS::UNSAFE
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::URI_REF
+# uninitialized constant URI::WSS::URI_REF
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::USERINFO
+# uninitialized constant URI::WSS::USERINFO
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::USE_REGISTRY
+# uninitialized constant URI::WSS::USE_REGISTRY
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::VERSION
+# uninitialized constant URI::WSS::VERSION
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# Did you mean?  URI::WS::VERSION_CODE
-# uninitialized constant URI::WS::VERSION_CODE
+# Did you mean?  URI::WSS::VERSION_CODE
+# uninitialized constant URI::WSS::VERSION_CODE
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# uninitialized constant URI::WS::WEB_ENCODINGS_
+# uninitialized constant URI::WSS::WEB_ENCODINGS_
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
 # Did you mean?  Encoding
-# wrong constant name request_uri
+# wrong constant name <static-init>
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
-# wrong constant name <static-init>
+# wrong constant name decode_uri_component
 # 
 #         my_value = klass.const_get(name, false) # rubocop:disable PrisonGuard/NoDynamicConstAccess
 #                         ^^^^^^^^^^
