@@ -8,6 +8,7 @@ gem 'sorbet-runtime'
 
 group :test do
   gem 'byebug'
+  gem 'openssl'
   gem 'rake'
   gem 'rspec', '3.11'
   gem 'rubocop', '1.42'
