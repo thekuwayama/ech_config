@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ech_config (0.0.2)
+    ech_config (0.0.3)
       sorbet-runtime
 
 GEM
