@@ -1,0 +1,26 @@
+# Generated from lib/ech_config/ech_config_contents/hpke_key_config/hpke_symmetric_cipher_suite.rb with RBS::Inline
+
+class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite
+end
+
+class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite
+  attr_reader kdf_id: untyped
+
+  attr_reader aead_id: untyped
+
+  # @rbs kdf_id: HpkeKdfId
+  # @rbs aead_id: HpkeAeadId
+  # @rbs return: void
+  def initialize: (HpkeKdfId kdf_id, HpkeAeadId aead_id) -> void
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # @rbs other: HpkeSymmetricCipherSuite
+  # @rbs return: Boolean
+  def ==: (HpkeSymmetricCipherSuite other) -> Boolean
+
+  # @rbs octet: String
+  # @rbs return: Array[HpkeSymmetricCipherSuite]
+  def self.decode_vectors: (String octet) -> Array[HpkeSymmetricCipherSuite]
+end

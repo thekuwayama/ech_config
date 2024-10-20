@@ -1,25 +1,29 @@
-# typed: false
 # frozen_string_literal: true
 
+# rbs_inline: enabled
+
 class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeKemId
-  extend T::Sig
   attr_reader :uint16
 
+  # @rbs uint16: Integer
+  # @rbs return: void
   def initialize(uint16)
     @uint16 = uint16
   end
 
-  sig { returns(String) }
+  # @rbs return: String
   def encode
     [@uint16].pack('n')
   end
 
-  sig { params(other: T.self_type).returns(T::Boolean) }
+  # @rbs other: HpkeKemId
+  # @rbs return: Boolean
   def ==(other)
     other.uint16 == @uint16
   end
 
-  sig { params(octet: String).returns(T.attached_class) }
+  # @rbs octet: String
+  # @rbs return: HpkeKemId
   def self.decode(octet)
     raise ::ECHConfig::DecodeError if octet.length != 2
 

@@ -1,5 +1,6 @@
-# typed: true
 # frozen_string_literal: true
+
+# rbs_inline: enabled
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig
   # define class
@@ -9,17 +10,13 @@ Dir["#{File.dirname(__FILE__)}/hpke_key_config/*.rb"]
   .sort.each { |f| require f }
 
 class ECHConfig::ECHConfigContents::HpkeKeyConfig
-  extend T::Sig
   attr_reader :config_id, :kem_id, :public_key, :cipher_suites
 
-  sig do
-    params(
-      config_id: Integer,
-      kem_id: HpkeKemId,
-      public_key: HpkePublicKey,
-      cipher_suites: T::Array[HpkeSymmetricCipherSuite]
-    ).void
-  end
+  # @rbs config_id: Integer
+  # @rbs kem_id: HpkeKemId
+  # @rbs public_key: HpkePublicKey
+  # @rbs cipher_suites: Array[HpkeSymmetricCipherSuite]
+  # @rbs return: void
   def initialize(config_id,
                  kem_id,
                  public_key,
@@ -30,7 +27,7 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig
     @cipher_suites = cipher_suites
   end
 
-  sig { returns(String) }
+  # @rbs return: String
   def encode
     [@config_id].pack('C') \
     + @kem_id.encode \
@@ -41,7 +38,8 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/PerceivedComplexity
-  sig { params(octet: String).returns([T.attached_class, T.nilable(String)]) }
+  # @rbs octet: String
+  # @rbs return: HpkeKeyConfig, String
   def self.decode(octet)
     raise ::ECHConfig::DecodeError if octet.empty?
 

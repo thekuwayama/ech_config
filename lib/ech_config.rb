@@ -1,8 +1,7 @@
 # encoding: ascii-8bit
-# typed: true
 # frozen_string_literal: true
 
-require 'sorbet-runtime'
+# rbs_inline: enabled
 
 class ECHConfig
   # define class
@@ -13,14 +12,13 @@ require_relative 'ech_config/ech_config_contents'
 require_relative 'ech_config/version'
 
 class ECHConfig
-  extend T::Sig
   attr_reader :version, :echconfig_contents
 
   private_class_method :new
 
-  @version = T.let(nil, T.nilable(String))
-  @echconfig_contents = T.let(nil, T.nilable(ECHConfigContents))
-
+  # @rbs version: String
+  # @rbs echconfig_contents: ECHConfigContents
+  # @rbs return: void
   def initialize(version, echconfig_contents)
     v = version.unpack1('n')
     # https://author-tools.ietf.org/iddiff?url2=draft-ietf-tls-esni-11.txt#context-3
@@ -30,13 +28,14 @@ class ECHConfig
     @echconfig_contents = echconfig_contents
   end
 
-  sig { returns(String) }
+  # @rbs return: String
   def encode
     @version + @echconfig_contents.encode.then { |s| [s.length].pack('n') + s }
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
-  sig { params(octet: String).returns(T::Array[T.attached_class]) }
+  # @rbs octet: String
+  # @rbs return: Array[ECHConfig]
   def self.decode_vectors(octet)
     i = 0
     echconfigs = []

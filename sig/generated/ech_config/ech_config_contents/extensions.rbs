@@ -1,0 +1,16 @@
+# Generated from lib/ech_config/ech_config_contents/extensions.rb with RBS::Inline
+
+class ECHConfig::ECHConfigContents::Extensions
+  attr_reader octet: untyped
+
+  # @rbs octet: String
+  # @rbs return: void
+  def initialize: (String octet) -> void
+
+  # @rbs return: String
+  def load: () -> String
+
+  # @rbs octet: String
+  # @rbs return: Extensions
+  def self.store: (String octet) -> Extensions
+end

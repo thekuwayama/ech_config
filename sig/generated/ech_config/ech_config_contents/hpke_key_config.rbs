@@ -1,0 +1,31 @@
+# Generated from lib/ech_config/ech_config_contents/hpke_key_config.rb with RBS::Inline
+
+class ECHConfig::ECHConfigContents::HpkeKeyConfig
+end
+
+class ECHConfig::ECHConfigContents::HpkeKeyConfig
+  attr_reader config_id: untyped
+
+  attr_reader kem_id: untyped
+
+  attr_reader public_key: untyped
+
+  attr_reader cipher_suites: untyped
+
+  # @rbs config_id: Integer
+  # @rbs kem_id: HpkeKemId
+  # @rbs public_key: HpkePublicKey
+  # @rbs cipher_suites: Array[HpkeSymmetricCipherSuite]
+  # @rbs return: void
+  def initialize: (Integer config_id, HpkeKemId kem_id, HpkePublicKey public_key, Array[HpkeSymmetricCipherSuite] cipher_suites) -> void
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
+  # @rbs octet: String
+  # @rbs return: HpkeKeyConfig, String
+  def self.decode: (String octet) -> HpkeKeyConfig
+end
