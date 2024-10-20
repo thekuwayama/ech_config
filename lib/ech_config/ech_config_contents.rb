@@ -1,5 +1,6 @@
-# typed: true
 # frozen_string_literal: true
+
+# rbs_inline: enabled
 
 class ECHConfig::ECHConfigContents
   # define class
@@ -9,17 +10,13 @@ Dir["#{File.dirname(__FILE__)}/ech_config_contents/*.rb"]
   .sort.each { |f| require f }
 
 class ECHConfig::ECHConfigContents
-  extend T::Sig
   attr_reader :key_config, :maximum_name_length, :public_name, :extensions
 
-  sig do
-    params(
-      key_config: HpkeKeyConfig,
-      maximum_name_length: Integer,
-      public_name: String,
-      extensions: Extensions
-    ).void
-  end
+  # @rbs key_config: HpkeKeyConfig
+  # @rbs maximum_name_length: Integer
+  # @rbs public_name: String
+  # @rbs extensions: Extensions
+  # @rbs return: void
   def initialize(key_config,
                  maximum_name_length,
                  public_name,
@@ -30,7 +27,7 @@ class ECHConfig::ECHConfigContents
     @extensions = extensions
   end
 
-  sig { returns(String) }
+  # @rbs return: String
   def encode
     @key_config.encode \
     + [@maximum_name_length].pack('C') \
@@ -41,7 +38,8 @@ class ECHConfig::ECHConfigContents
   # rubocop:disable Metrics/AbcSize
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/PerceivedComplexity
-  sig { params(octet: String).returns(T.attached_class) }
+  # @rbs octet: String
+  # @rbs return: ECHConfigContents
   def self.decode(octet)
     key_config, octet = HpkeKeyConfig.decode(octet)
     raise ::ECHConfig::DecodeError if octet.nil?

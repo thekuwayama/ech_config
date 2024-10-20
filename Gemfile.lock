@@ -2,7 +2,6 @@ PATH
   remote: .
   specs:
     ech_config (0.0.3)
-      sorbet-runtime
 
 GEM
   remote: https://rubygems.org/
@@ -11,14 +10,21 @@ GEM
     byebug (11.1.3)
     diff-lcs (1.5.0)
     json (2.7.1)
+    logger (1.6.1)
     openssl (3.2.0)
     parallel (1.23.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
       racc
+    prism (1.0.0)
     racc (1.7.3)
     rainbow (3.1.1)
     rake (13.1.0)
+    rbs (3.6.1)
+      logger
+    rbs-inline (0.9.0)
+      prism (>= 0.29, < 1.1)
+      rbs (>= 3.5.0)
     regexp_parser (2.8.3)
     rexml (3.2.6)
     rspec (3.11.0)
@@ -46,13 +52,7 @@ GEM
       unicode-display_width (>= 1.4.0, < 3.0)
     rubocop-ast (1.30.0)
       parser (>= 3.2.1.0)
-    rubocop-sorbet (0.7.6)
-      rubocop (>= 0.90.0)
     ruby-progressbar (1.13.0)
-    sorbet (0.5.11155)
-      sorbet-static (= 0.5.11155)
-    sorbet-runtime (0.5.11155)
-    sorbet-static (0.5.11155-universal-darwin)
     unicode-display_width (2.5.0)
     webrick (1.8.1)
 
@@ -66,11 +66,9 @@ DEPENDENCIES
   ech_config!
   openssl
   rake
+  rbs-inline
   rspec (= 3.11)
   rubocop (= 1.42)
-  rubocop-sorbet
-  sorbet
-  sorbet-runtime
   webrick
 
 BUNDLED WITH

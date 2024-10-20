@@ -1,0 +1,20 @@
+# Generated from lib/ech_config/ech_config_contents/hpke_key_config/hpke_kem_id.rb with RBS::Inline
+
+class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeKemId
+  attr_reader uint16: untyped
+
+  # @rbs uint16: Integer
+  # @rbs return: void
+  def initialize: (Integer uint16) -> void
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # @rbs other: HpkeKemId
+  # @rbs return: Boolean
+  def ==: (HpkeKemId other) -> Boolean
+
+  # @rbs octet: String
+  # @rbs return: HpkeKemId
+  def self.decode: (String octet) -> HpkeKemId
+end

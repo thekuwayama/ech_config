@@ -1,0 +1,23 @@
+# Generated from lib/ech_config.rb with RBS::Inline
+
+class ECHConfig
+end
+
+class ECHConfig
+  attr_reader version: untyped
+
+  attr_reader echconfig_contents: untyped
+
+  # @rbs version: String
+  # @rbs echconfig_contents: ECHConfigContents
+  # @rbs return: void
+  def initialize: (String version, ECHConfigContents echconfig_contents) -> void
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # @rbs octet: String
+  # @rbs return: Array[ECHConfig]
+  def self.decode_vectors: (String octet) -> Array[ECHConfig]
+end

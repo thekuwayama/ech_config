@@ -1,4 +1,3 @@
-# typed: false
 # frozen_string_literal: true
 
 require 'bundler/gem_tasks'
@@ -8,9 +7,9 @@ require 'rspec/core/rake_task'
 RuboCop::RakeTask.new
 RSpec::Core::RakeTask.new(:spec)
 
-desc 'Run Sorbet type checker'
-task :sorbet do
-  sh 'srb tc'
+desc 'Generate RBS signatures for `lib` files'
+task :rbs_inline do
+  sh 'rbs-inline', 'lib', '--output=sig/generated'
 end
 
-task default: %i[rubocop sorbet spec]
+task default: %i[rubocop spec rbs_inline]
