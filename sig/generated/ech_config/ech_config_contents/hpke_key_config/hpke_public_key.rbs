@@ -1,0 +1,16 @@
+# Generated from lib/ech_config/ech_config_contents/hpke_key_config/hpke_public_key.rb with RBS::Inline
+
+class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkePublicKey
+  attr_reader opaque: untyped
+
+  # @rbs opaque: String
+  # @rbs return: void
+  def initialize: (String opaque) -> void
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # @rbs octet: String
+  # @rbs return: ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkePublicKey
+  def self.decode: (String octet) -> ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkePublicKey
+end

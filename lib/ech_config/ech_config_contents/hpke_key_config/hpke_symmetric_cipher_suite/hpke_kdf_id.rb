@@ -1,28 +1,33 @@
-# typed: false
 # frozen_string_literal: true
 
+# rbs_inline: enabled
+
 class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite::HpkeKdfId
-  extend T::Sig
   attr_reader :uint16
 
+  # @rbs uint16: Integer
+  # @rbs return: void
   def initialize(uint16)
     @uint16 = uint16
   end
 
-  sig { returns(String) }
+  # @rbs return: String
   def encode
     [@uint16].pack('n')
   end
 
-  sig { params(other: T.self_type).returns(T::Boolean) }
+  # @rbs other: ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite::HpkeKdfId
+  # @rbs return: bool
   def ==(other)
     other.uint16 == @uint16
   end
 
-  sig { params(octet: String).returns(T.attached_class) }
+  # @rbs octet: String
+  # @rbs return: ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite::HpkeKdfId
   def self.decode(octet)
     raise ::ECHConfig::DecodeError if octet.length != 2
 
-    new(octet.unpack1('n'))
+    uint16 = octet.unpack1('n') # @type var uint16: Integer
+    new(uint16)
   end
 end

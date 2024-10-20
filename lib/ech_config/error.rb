@@ -1,5 +1,6 @@
-# typed: strict
 # frozen_string_literal: true
+
+# rbs_inline: enabled
 
 # Generic error, common for all classes under ECHConfig module.
 class ECHConfig::Error < StandardError; end
