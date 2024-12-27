@@ -2,6 +2,9 @@ AllCops:
   SuggestExtensions: false
   TargetRubyVersion: 2.7
 
+Style/ClassAndModuleChildren:
+  EnforcedStyle: compact
+
 Style/ConditionalAssignment:
   Enabled: false
 
@@ -11,8 +14,11 @@ Style/Documentation:
 Style/NumericLiterals:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+Style/RedundantReturn:
+  Enabled: false
+
+Layout/LeadingCommentSpace:
+  Enabled: false
 
 Metrics/AbcSize:
   Max: 30
@@ -26,10 +32,3 @@ Naming/MethodParameterName:
 Metrics/BlockLength:
   Exclude:
     - 'spec/*.rb'
-    - 'sorbet/**/*'
-
-require:
-  - rubocop-sorbet
-
-Sorbet:
-  Enabled: true

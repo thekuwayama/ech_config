@@ -1,0 +1,31 @@
+# Generated from lib/ech_config/ech_config_contents.rb with RBS::Inline
+
+class ECHConfig::ECHConfigContents
+end
+
+class ECHConfig::ECHConfigContents
+  attr_reader key_config: untyped
+
+  attr_reader maximum_name_length: untyped
+
+  attr_reader public_name: untyped
+
+  attr_reader extensions: untyped
+
+  # @rbs key_config: ECHConfig::ECHConfigContents::HpkeKeyConfig
+  # @rbs maximum_name_length: Integer
+  # @rbs public_name: String
+  # @rbs extensions: ECHConfig::ECHConfigContents::Extensions
+  # @rbs return: void
+  def initialize: (ECHConfig::ECHConfigContents::HpkeKeyConfig key_config, Integer maximum_name_length, String public_name, ECHConfig::ECHConfigContents::Extensions extensions) -> void
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
+  # @rbs octet: String
+  # @rbs return: ECHConfig::ECHConfigContents
+  def self.decode: (String octet) -> ECHConfig::ECHConfigContents
+end

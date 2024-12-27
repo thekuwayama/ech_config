@@ -29,6 +29,9 @@ jobs:
       - name: Run Rubocop
         run: |
           bundle exec rake rubocop
-      - name: Run Sorbet type checker
+      - name: Run steep type checker
         run: |
-          bundle exec rake sorbet
+          bundle exec rake steep:check
+      - name: Run rspec
+        run: |
+          bundle exec rake spec

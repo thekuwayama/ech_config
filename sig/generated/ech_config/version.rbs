@@ -1,0 +1,5 @@
+# Generated from lib/ech_config/version.rb with RBS::Inline
+
+class ECHConfig
+  VERSION: ::String
+end
