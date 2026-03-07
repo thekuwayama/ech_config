@@ -16,6 +16,9 @@ class ECHConfig
   # @rbs return: String
   def encode: () -> String
 
+  # @rbs return: String
+  def to_pem: () -> String
+
   # rubocop:disable Metrics/CyclomaticComplexity
   # @rbs octet: String
   # @rbs return: Array[ECHConfig]

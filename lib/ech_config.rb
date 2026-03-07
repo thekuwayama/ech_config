@@ -3,6 +3,8 @@
 
 # rbs_inline: enabled
 
+require 'base64'
+
 class ECHConfig
   # define class
 end
@@ -30,6 +32,18 @@ class ECHConfig
   # @rbs return: String
   def encode
     @version + @echconfig_contents.encode.then { |s| [s.length].pack('n') + s }
+  end
+
+  # @rbs return: String
+  def to_pem
+    body = Base64.strict_encode64(encode).scan(/.{1,64}/).join("\n")
+
+    # https://datatracker.ietf.org/doc/html/rfc9934#section-3
+    <<~PEM
+      -----BEGIN ECHCONFIG-----
+      #{body}
+      -----END ECHCONFIG-----
+    PEM
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
