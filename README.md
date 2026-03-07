@@ -3,7 +3,7 @@
 [![Gem Version](https://badge.fury.io/rb/ech_config.svg)](https://badge.fury.io/rb/ech_config)
 [![CI](https://github.com/thekuwayama/ech_config/workflows/CI/badge.svg)](https://github.com/thekuwayama/ech_config/actions?workflow=CI)
 
-`ech_config` is Ruby implementation of [Encrypted ClientHello Configuration](https://datatracker.ietf.org/doc/draft-ietf-tls-esni/).
+`ech_config` is Ruby implementation of [Encrypted ClientHello Configuration](https://datatracker.ietf.org/doc/html/rfc9849.html).
 
 `ech_config` supports `0xfe0b` ~ `0xfe0f` ECHConfig.version.
 
