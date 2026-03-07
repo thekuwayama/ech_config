@@ -21,7 +21,7 @@ class ECHConfig
   # @rbs return: void
   def initialize(version, echconfig_contents)
     v = version.unpack1('n')
-    # https://author-tools.ietf.org/iddiff?url2=draft-ietf-tls-esni-11.txt#context-3
+    # https://datatracker.ietf.org/doc/html/rfc9849#section-4
     raise ::ECHConfig::UnsupportedVersion \
       unless v > "\xfe\x0a".unpack1('n') && v <= "\xfe\x0d".unpack1('n') # steep:ignore
 
