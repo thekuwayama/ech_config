@@ -3,4 +3,6 @@
 target :lib do
   signature 'sig'
   check 'lib'
+
+  library 'base64'
 end
