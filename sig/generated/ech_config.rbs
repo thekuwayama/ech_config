@@ -16,11 +16,20 @@ class ECHConfig
   # @rbs return: String
   def encode: () -> String
 
-  # @rbs return: String
-  def to_pem: () -> String
-
   # rubocop:disable Metrics/CyclomaticComplexity
   # @rbs octet: String
   # @rbs return: Array[ECHConfig]
   def self.decode_vectors: (String octet) -> Array[ECHConfig]
+end
+
+class ECHConfigList
+  # @rbs echconfigs: Array[ECHConfig]
+  # @rbs return: void
+  def initialize: (Array[ECHConfig] echconfigs) -> void
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # @rbs return: String
+  def to_pem: () -> String
 end

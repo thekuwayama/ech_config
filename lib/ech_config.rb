@@ -34,18 +34,6 @@ class ECHConfig
     @version + @echconfig_contents.encode.then { |s| [s.length].pack('n') + s }
   end
 
-  # @rbs return: String
-  def to_pem
-    body = Base64.strict_encode64(encode).scan(/.{1,64}/).join("\n")
-
-    # https://datatracker.ietf.org/doc/html/rfc9934#section-3
-    <<~PEM
-      -----BEGIN ECHCONFIG-----
-      #{body}
-      -----END ECHCONFIG-----
-    PEM
-  end
-
   # rubocop:disable Metrics/CyclomaticComplexity
   # @rbs octet: String
   # @rbs return: Array[ECHConfig]
@@ -71,4 +59,29 @@ class ECHConfig
     echconfigs
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+end
+
+class ECHConfigList
+  # @rbs echconfigs: Array[ECHConfig]
+  # @rbs return: void
+  def initialize(echconfigs)
+    @echconfigs = echconfigs
+  end
+
+  # @rbs return: String
+  def encode
+    @echconfigs.map(&:encode).join.then { |s| [s.length].pack('n') + s }
+  end
+
+  # @rbs return: String
+  def to_pem
+    body = Base64.strict_encode64(encode).scan(/.{1,64}/).join("\n")
+
+    # https://datatracker.ietf.org/doc/html/rfc9934#section-3
+    <<~PEM
+      -----BEGIN ECHCONFIG-----
+      #{body}
+      -----END ECHCONFIG-----
+    PEM
+  end
 end
