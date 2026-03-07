@@ -51,7 +51,7 @@ class ECHConfig
   # @rbs return: Array[ECHConfig]
   def self.decode_vectors(octet)
     i = 0
-    echconfigs = []
+    echconfigs = [] # @type var echconfigs: Array[ECHConfig]
     while i < octet.length
       raise ::ECHConfig::DecodeError if i + 4 > octet.length
 

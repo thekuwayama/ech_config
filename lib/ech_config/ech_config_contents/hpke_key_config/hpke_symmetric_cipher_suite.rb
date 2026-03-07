@@ -35,7 +35,7 @@ class ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite
   # @rbs return: Array[ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite]
   def self.decode_vectors(octet)
     i = 0
-    cipher_suites = []
+    cipher_suites = [] # @type var cipher_suites: Array[ECHConfig::ECHConfigContents::HpkeKeyConfig::HpkeSymmetricCipherSuite]
     while i < octet.length
       raise ::ECHConfig::DecodeError if i + 4 > octet.length
 

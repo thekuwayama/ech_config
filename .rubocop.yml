@@ -1,6 +1,5 @@
 AllCops:
-  SuggestExtensions: false
-  TargetRubyVersion: 2.7
+  TargetRubyVersion: 4.0
 
 Style/ClassAndModuleChildren:
   EnforcedStyle: compact

@@ -9,8 +9,8 @@ group :test do
   gem 'openssl'
   gem 'rake'
   gem 'rbs-inline'
-  gem 'rspec', '3.11'
-  gem 'rubocop', '1.42'
+  gem 'rspec'
+  gem 'rubocop', '1.82.1'
   gem 'steep'
   gem 'webrick'
 end
