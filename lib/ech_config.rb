@@ -14,8 +14,6 @@ require_relative 'ech_config/version'
 class ECHConfig
   attr_reader :version, :echconfig_contents
 
-  private_class_method :new
-
   # @rbs version: String
   # @rbs echconfig_contents: ECHConfig::ECHConfigContents
   # @rbs return: void
