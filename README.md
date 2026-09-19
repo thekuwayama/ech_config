@@ -5,7 +5,7 @@
 
 `ech_config` is Ruby implementation of [Encrypted ClientHello Configuration](https://datatracker.ietf.org/doc/html/rfc9849.html).
 
-`ech_config` supports `0xfe0b` ~ `0xfe0f` ECHConfig.version.
+`ech_config` supports `0xfe0b` ~ `0xfe0d` ECHConfig.version.
 
 
 ## Installation
