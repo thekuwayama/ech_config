@@ -8,8 +8,10 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs octet: String
   # @rbs return: void
   def initialize(octet)
-    # Note taht ECHConfig::ECHConfigContents::Extension only has octets.
-    # If you need, deserialize octets to get TLS Extension objects.
+    # TODO: `ECHConfigExtension extensions<0..2^16-1>`
+    # as opaque octets, without the 2-octet length prefix. Each element is
+    # an ECHConfigExtension (2-octet type + opaque data<0..2^16-1>).
+    # https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2
     @octet = octet
   end
 
