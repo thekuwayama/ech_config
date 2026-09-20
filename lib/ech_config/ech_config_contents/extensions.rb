@@ -31,7 +31,7 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs ex: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
   # @rbs return: self
   def <<(ex)
-    raise ArgumentError unless self.class.valid_order?(keys | [ex.type])
+    raise ArgumentError unless self.class.valid_ech_auth?(keys | [ex.type])
 
     store(ex.type, ex)
     self
@@ -46,7 +46,7 @@ class ECHConfig::ECHConfigContents::Extensions
   #
   # @rbs types: Array[Integer]
   # @rbs return: bool
-  def self.valid_order?(types)
+  def self.valid_ech_auth?(types)
     return true unless types.include?(ECHAuth::TYPE)
 
     !types.include?(ECHAuthInfo::TYPE) && types.last == ECHAuth::TYPE
@@ -83,7 +83,7 @@ class ECHConfig::ECHConfigContents::Extensions
       i += 4 + ex_len
     end
     raise ::ECHConfig::DecodeError if i != octet.length
-    raise ::ECHConfig::DecodeError unless valid_order?(extensions.keys)
+    raise ::ECHConfig::DecodeError unless valid_ech_auth?(extensions.keys)
 
     extensions
   end
