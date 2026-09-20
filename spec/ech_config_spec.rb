@@ -94,4 +94,55 @@ RSpec.describe ECHConfig do
       expect(tbs_octet.length).to eq octet.length - ech_auth.signature.length
     end
   end
+
+  context 'echconfig, whose ech_auth is signed with an ed25519 key' do
+    let(:key) do
+      OpenSSL::PKey.generate_key('ED25519')
+    end
+
+    let(:key_config) do
+      hkc = ECHConfig::ECHConfigContents::HpkeKeyConfig
+      hkc.new(
+        0,
+        hkc::HpkeKemId.new(0x0020),
+        hkc::HpkePublicKey.new("\x00" * 32),
+        [
+          hkc::HpkeSymmetricCipherSuite.new(
+            hkc::HpkeSymmetricCipherSuite::HpkeKdfId.new(0x0001),
+            hkc::HpkeSymmetricCipherSuite::HpkeAeadId.new(0x0001)
+          )
+        ]
+      )
+    end
+
+    def echconfig(key, signature)
+      ech_auth = ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(
+        0x6984d7d6, 0, key.public_to_der, 0x0807, signature
+      )
+      ECHConfig.new(
+        "\xfe\x0d",
+        ECHConfig::ECHConfigContents.new(
+          key_config,
+          0,
+          'localhost',
+          ECHConfig::ECHConfigContents::Extensions.new([ech_auth])
+        )
+      )
+    end
+
+    it 'should verify' do
+      signature = key.sign(nil, echconfig(key, '').to_be_signed)
+      signed = ECHConfig.decode_vectors(echconfig(key, signature).encode).first
+
+      ech_auth = signed
+                 .echconfig_contents
+                 .extensions[ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
+      expect(ech_auth.signature).to eq signature
+      expect(signed.to_be_signed).to eq echconfig(key, '').to_be_signed
+      expect(
+        OpenSSL::PKey.read(ech_auth.spki)
+                     .verify(nil, ech_auth.signature, signed.to_be_signed)
+      ).to be true
+    end
+  end
 end
