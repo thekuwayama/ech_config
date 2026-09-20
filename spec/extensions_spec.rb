@@ -35,21 +35,21 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should decode' do
-      exs = described_class.decode(octet)
+      exs = ECHConfig::ECHConfigContents::Extensions.decode(octet)
       expect(exs.length).to eq 1
 
-      ex = exs[described_class::ECHAuthInfo::TYPE]
-      expect(ex).to be_a described_class::ECHAuthInfo
+      ex = exs[ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo::TYPE]
+      expect(ex).to be_a ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo
       expect(ex.trusted_keys).to eq ["\x01" * 32, "\x02" * 32]
       expect(ex.mandatory?).to be true
       expect(exs.any_unsupported_mandatory?).to be false
     end
 
     it 'should encode' do
-      expect(described_class.decode(octet).encode).to eq octet
+      expect(ECHConfig::ECHConfigContents::Extensions.decode(octet).encode).to eq octet
       expect(
-        described_class.new(
-          [described_class::ECHAuthInfo.new(["\x01" * 32, "\x02" * 32])]
+        ECHConfig::ECHConfigContents::Extensions.new(
+          [ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo.new(["\x01" * 32, "\x02" * 32])]
         ).encode
       ).to eq octet
     end
@@ -63,13 +63,13 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
-      expect { described_class::ECHAuthInfo.decode(octet.slice(4..) || '') }
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo.decode(octet.slice(4..) || '') }
         .to raise_error ECHConfig::DecodeError
     end
 
     it 'should NOT be constructed' do
-      expect { described_class::ECHAuthInfo.new([]) }.to raise_error ArgumentError
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo.new([]) }.to raise_error ArgumentError
     end
   end
 
@@ -83,8 +83,8 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
-      expect { described_class::ECHAuthInfo.decode(octet.slice(4..) || '') }
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo.decode(octet.slice(4..) || '') }
         .to raise_error ECHConfig::DecodeError
     end
   end
@@ -99,8 +99,8 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
-      expect { described_class::ECHAuthInfo.decode(octet.slice(4..) || '') }
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo.decode(octet.slice(4..) || '') }
         .to raise_error ECHConfig::DecodeError
     end
   end
@@ -120,11 +120,11 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should decode' do
-      exs = described_class.decode(octet)
+      exs = ECHConfig::ECHConfigContents::Extensions.decode(octet)
       expect(exs.length).to eq 1
 
-      ex = exs[described_class::ECHAuth::TYPE]
-      expect(ex).to be_a described_class::ECHAuth
+      ex = exs[ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
+      expect(ex).to be_a ECHConfig::ECHConfigContents::Extensions::ECHAuth
       expect(ex.not_after).to eq 0x6984d7d6
       expect(ex.disable).to eq 0
       expect(ex.spki).to eq spki
@@ -135,10 +135,10 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should encode' do
-      expect(described_class.decode(octet).encode).to eq octet
+      expect(ECHConfig::ECHConfigContents::Extensions.decode(octet).encode).to eq octet
       expect(
-        described_class.new(
-          [described_class::ECHAuth.new(0x6984d7d6, 0, spki, 0x0807, signature)]
+        ECHConfig::ECHConfigContents::Extensions.new(
+          [ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(0x6984d7d6, 0, spki, 0x0807, signature)]
         ).encode
       ).to eq octet
     end
@@ -159,13 +159,13 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
-      expect { described_class::ECHAuth.decode(octet.slice(4..) || '') }
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuth.decode(octet.slice(4..) || '') }
         .to raise_error ECHConfig::DecodeError
     end
 
     it 'should NOT be constructed' do
-      expect { described_class::ECHAuth.new(0x6984d7d6, 2, spki, 0x0807, signature) }
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(0x6984d7d6, 2, spki, 0x0807, signature) }
         .to raise_error ArgumentError
     end
   end
@@ -183,13 +183,13 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
-      expect { described_class::ECHAuth.decode(octet.slice(4..) || '') }
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuth.decode(octet.slice(4..) || '') }
         .to raise_error ECHConfig::DecodeError
     end
 
     it 'should NOT be constructed' do
-      expect { described_class::ECHAuth.new(0x6984d7d6, 0, '', 0x0807, signature) }
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(0x6984d7d6, 0, '', 0x0807, signature) }
         .to raise_error ArgumentError
     end
   end
@@ -205,8 +205,8 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
-      expect { described_class::ECHAuth.decode(octet.slice(4..) || '') }
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions::ECHAuth.decode(octet.slice(4..) || '') }
         .to raise_error ECHConfig::DecodeError
     end
   end
@@ -227,14 +227,14 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
     end
 
     it 'should NOT be constructed' do
-      auth = described_class::ECHAuth.new(0x6984d7d6, 0, spki, 0x0807, signature)
-      unknown = described_class::UnknownExtension.new(0x0001, "\xaa\xbb")
-      expect { described_class.new([auth, unknown]) }.to raise_error ArgumentError
-      expect { described_class.new([auth]) << unknown }.to raise_error ArgumentError
+      auth = ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(0x6984d7d6, 0, spki, 0x0807, signature)
+      unknown = ECHConfig::ECHConfigContents::Extensions::UnknownExtension.new(0x0001, "\xaa\xbb")
+      expect { ECHConfig::ECHConfigContents::Extensions.new([auth, unknown]) }.to raise_error ArgumentError
+      expect { ECHConfig::ECHConfigContents::Extensions.new([auth]) << unknown }.to raise_error ArgumentError
     end
   end
 
@@ -256,14 +256,14 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should NOT decode' do
-      expect { described_class.decode(octet) }.to raise_error ECHConfig::DecodeError
+      expect { ECHConfig::ECHConfigContents::Extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
     end
 
     it 'should NOT be constructed' do
-      auth = described_class::ECHAuth.new(0x6984d7d6, 0, spki, 0x0807, signature)
-      info = described_class::ECHAuthInfo.new(["\x01" * 32])
-      expect { described_class.new([info, auth]) }.to raise_error ArgumentError
-      expect { described_class.new([auth]) << info }.to raise_error ArgumentError
+      auth = ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(0x6984d7d6, 0, spki, 0x0807, signature)
+      info = ECHConfig::ECHConfigContents::Extensions::ECHAuthInfo.new(["\x01" * 32])
+      expect { ECHConfig::ECHConfigContents::Extensions.new([info, auth]) }.to raise_error ArgumentError
+      expect { ECHConfig::ECHConfigContents::Extensions.new([auth]) << info }.to raise_error ArgumentError
     end
   end
 
@@ -275,11 +275,11 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should decode' do
-      exs = described_class.decode(octet)
+      exs = ECHConfig::ECHConfigContents::Extensions.decode(octet)
       expect(exs.length).to eq 1
 
       ex = exs[0x0001]
-      expect(ex).to be_a described_class::UnknownExtension
+      expect(ex).to be_a ECHConfig::ECHConfigContents::Extensions::UnknownExtension
       expect(ex.data).to eq "\xaa\xbb"
       expect(exs.any_unsupported_mandatory?).to be false
       expect(exs.encode).to eq octet
@@ -294,11 +294,11 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
 
     it 'should decode' do
-      exs = described_class.decode(octet)
+      exs = ECHConfig::ECHConfigContents::Extensions.decode(octet)
       expect(exs.length).to eq 1
 
       ex = exs[0x8001]
-      expect(ex).to be_a described_class::UnknownExtension
+      expect(ex).to be_a ECHConfig::ECHConfigContents::Extensions::UnknownExtension
       expect(ex.mandatory?).to be true
       expect(exs.any_unsupported_mandatory?).to be true
       expect(exs.encode).to eq octet

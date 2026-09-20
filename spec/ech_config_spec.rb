@@ -115,12 +115,15 @@ RSpec.describe ECHConfig do
       )
     end
 
-    def echconfig(key, signature)
-      unknown = ECHConfig::ECHConfigContents::Extensions::UnknownExtension.new(
+    let(:unknown) do
+      ECHConfig::ECHConfigContents::Extensions::UnknownExtension.new(
         0x0001, "\xaa\xbb"
       )
+    end
+
+    let(:unsigned) do
       ech_auth = ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(
-        0x6984d7d6, 0, key.public_to_der, 0x0807, signature
+        0x6984d7d6, 0, key.public_to_der, 0x0807, ''
       )
       ECHConfig.new(
         "\xfe\x0d",
@@ -133,10 +136,27 @@ RSpec.describe ECHConfig do
       )
     end
 
-    it 'should verify' do
-      signature = key.sign(nil, echconfig(key, '').to_be_signed)
-      signed = ECHConfig.decode_vectors(echconfig(key, signature).encode).first
+    let(:signature) do
+      key.sign(nil, unsigned.to_be_signed)
+    end
 
+    let(:signed) do
+      ech_auth = ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(
+        0x6984d7d6, 0, key.public_to_der, 0x0807, signature
+      )
+      octet = ECHConfig.new(
+        "\xfe\x0d",
+        ECHConfig::ECHConfigContents.new(
+          key_config,
+          0,
+          'localhost',
+          ECHConfig::ECHConfigContents::Extensions.new([unknown, ech_auth])
+        )
+      ).encode
+      ECHConfig.decode_vectors(octet).first
+    end
+
+    it 'should verify' do
       expect(signed.echconfig_contents.extensions.keys)
         .to eq [0x0001, ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
 
@@ -144,7 +164,7 @@ RSpec.describe ECHConfig do
                  .echconfig_contents
                  .extensions[ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
       expect(ech_auth.signature).to eq signature
-      expect(signed.to_be_signed).to eq echconfig(key, '').to_be_signed
+      expect(signed.to_be_signed).to eq unsigned.to_be_signed
       expect(signed.to_be_signed).to include "\x00\x01\x00\x02\xaa\xbb"
       expect(signed.to_be_signed.length)
         .to eq ECHConfig::ECHConfigContents::Extensions::ECHAuth::CONTEXT_LABEL.length \
