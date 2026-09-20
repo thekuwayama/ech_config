@@ -29,6 +29,9 @@ RSpec.describe ECHConfig do
       expect(key_config.cipher_suites.length).to eq 1
       expect(key_config.cipher_suites.first.kdf_id.uint16).to eq 0x0001
       expect(key_config.cipher_suites.first.aead_id.uint16).to eq 0x0001
+
+      extensions = ech_configs.first.echconfig_contents.extensions
+      expect(extensions).to be_empty
     end
   end
 end

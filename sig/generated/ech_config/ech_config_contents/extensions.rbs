@@ -1,16 +1,36 @@
 # Generated from lib/ech_config/ech_config_contents/extensions.rb with RBS::Inline
 
-class ECHConfig::ECHConfigContents::Extensions
-  attr_reader octet: untyped
+# @rbs inherits Hash[Integer, ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
+class ECHConfig::ECHConfigContents::Extensions < Hash[Integer, ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
+end
 
-  # @rbs octet: String
+# https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2
+class ECHConfig::ECHConfigContents::Extensions
+  # @rbs extensions: Array[ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
   # @rbs return: void
-  def initialize: (String octet) -> void
+  def initialize: (?Array[ECHConfig::ECHConfigContents::Extensions::UnknownExtension] extensions) -> void
 
   # @rbs return: String
-  def load: () -> String
+  def encode: () -> String
 
+  alias load encode
+
+  # @rbs ex: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
+  # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
+  def <<: (ECHConfig::ECHConfigContents::Extensions::UnknownExtension ex) -> ECHConfig::ECHConfigContents::Extensions::UnknownExtension
+
+  # Clients MUST parse the extension list and check for unsupported mandatory extensions.
+  # If an unsupported mandatory extension is present, clients MUST ignore the ECHConfig.
+  # https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2-2
+  #
+  # @rbs return: bool
+  def any_mandatory?: () -> bool
+
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   # @rbs octet: String
   # @rbs return: ECHConfig::ECHConfigContents::Extensions
-  def self.store: (String octet) -> ECHConfig::ECHConfigContents::Extensions
+  def self.decode: (String octet) -> ECHConfig::ECHConfigContents::Extensions
+
+  alias self.store self.decode
 end
