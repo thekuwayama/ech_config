@@ -42,7 +42,7 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
       expect(ex).to be_a described_class::ECHAuthInfo
       expect(ex.trusted_keys).to eq ["\x01" * 32, "\x02" * 32]
       expect(ex.mandatory?).to be true
-      expect(exs.any_mandatory?).to be true
+      expect(exs.any_unsupported_mandatory?).to be false
     end
 
     it 'should encode' do
@@ -131,7 +131,7 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
       expect(ex.algorithm).to eq 0x0807
       expect(ex.signature).to eq signature
       expect(ex.mandatory?).to be true
-      expect(exs.any_mandatory?).to be true
+      expect(exs.any_unsupported_mandatory?).to be false
     end
 
     it 'should encode' do
@@ -281,7 +281,26 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
       ex = exs[0x0001]
       expect(ex).to be_a described_class::UnknownExtension
       expect(ex.data).to eq "\xaa\xbb"
-      expect(exs.any_mandatory?).to be false
+      expect(exs.any_unsupported_mandatory?).to be false
+      expect(exs.encode).to eq octet
+    end
+  end
+
+  context 'unknown mandatory extension' do
+    let(:octet) do
+      <<-BIN.split.map(&:hex).map(&:chr).join
+        80 01 00 02 aa bb
+      BIN
+    end
+
+    it 'should decode' do
+      exs = described_class.decode(octet)
+      expect(exs.length).to eq 1
+
+      ex = exs[0x8001]
+      expect(ex).to be_a described_class::UnknownExtension
+      expect(ex.mandatory?).to be true
+      expect(exs.any_unsupported_mandatory?).to be true
       expect(exs.encode).to eq octet
     end
   end

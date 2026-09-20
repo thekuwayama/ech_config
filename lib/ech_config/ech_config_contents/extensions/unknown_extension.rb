@@ -20,6 +20,11 @@ class ECHConfig::ECHConfigContents::Extensions::UnknownExtension
     [@type].pack('n') + @data.then { |s| [s.length].pack('n') + s }
   end
 
+  # @rbs return: bool
+  def supported?
+    false
+  end
+
   # @rbs octet: String
   # @rbs type: Integer
   # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension

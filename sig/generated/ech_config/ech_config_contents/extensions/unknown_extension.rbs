@@ -15,6 +15,9 @@ class ECHConfig::ECHConfigContents::Extensions::UnknownExtension
   # @rbs return: String
   def encode: () -> String
 
+  # @rbs return: bool
+  def supported?: () -> bool
+
   # @rbs octet: String
   # @rbs type: Integer
   # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension

@@ -29,10 +29,7 @@ Clients MUST ignore an ECHConfig that carries an unsupported mandatory ECHConfig
 
 ```ruby
 echconfigs.reject do |echconfig|
-  echconfig.echconfig_contents.extensions.values.any? do |ex|
-    ex.mandatory? &&
-      ex.is_a?(ECHConfig::ECHConfigContents::Extensions::UnknownExtension)
-  end
+  echconfig.echconfig_contents.extensions.any_unsupported_mandatory?
 end
 ```
 

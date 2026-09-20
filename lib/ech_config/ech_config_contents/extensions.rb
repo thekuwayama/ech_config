@@ -57,8 +57,8 @@ class ECHConfig::ECHConfigContents::Extensions
   # https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2-2
   #
   # @rbs return: bool
-  def any_mandatory?
-    values.any?(&:mandatory?)
+  def any_unsupported_mandatory?
+    values.any? { |ex| ex.mandatory? && !ex.supported? }
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
