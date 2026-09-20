@@ -25,9 +25,10 @@ class ECHConfig::ECHConfigContents::Extensions
   end
 
   # @rbs ex: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
-  # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
+  # @rbs return: self
   def <<(ex)
     store(ex.type, ex)
+    self
   end
 
   # Clients MUST parse the extension list and check for unsupported mandatory extensions.

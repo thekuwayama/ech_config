@@ -14,8 +14,8 @@ class ECHConfig::ECHConfigContents::Extensions
   def encode: () -> String
 
   # @rbs ex: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
-  # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
-  def <<: (ECHConfig::ECHConfigContents::Extensions::UnknownExtension ex) -> ECHConfig::ECHConfigContents::Extensions::UnknownExtension
+  # @rbs return: self
+  def <<: (ECHConfig::ECHConfigContents::Extensions::UnknownExtension ex) -> self
 
   # Clients MUST parse the extension list and check for unsupported mandatory extensions.
   # If an unsupported mandatory extension is present, clients MUST ignore the ECHConfig.
