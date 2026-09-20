@@ -78,6 +78,7 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs return: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
   def self.decode_extension(octet, type)
     case type
+    when ECHAuth::TYPE then ECHAuth.decode(octet)
     when ECHAuthInfo::TYPE then ECHAuthInfo.decode(octet)
     else UnknownExtension.decode(octet, type)
     end

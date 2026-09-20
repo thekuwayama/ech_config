@@ -1,0 +1,59 @@
+# Generated from lib/ech_config/ech_config_contents/extensions/ech_auth.rb with RBS::Inline
+
+# https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1
+class ECHConfig::ECHConfigContents::Extensions::ECHAuth
+  include ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
+
+  # Value: TBD2 (assigned with the high-order bit set)
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-9.1-5.1.1
+  #
+  # TODO: placeholder until IANA assigns TBD2. 0xfe0d is the codepoint
+  # ech-auth-interop uses for ech_auth.
+  # https://github.com/grittygrease/ech-auth-interop
+  TYPE: ::Integer
+
+  # context_label = "TLS-ECH-AUTH-v1"
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1.1-2
+  CONTEXT_LABEL: ::String
+
+  # uint64 not_after, uint8 disable and the length prefix of spki
+  FIXED_LENGTH: untyped
+
+  attr_reader not_after: untyped
+
+  attr_reader disable: untyped
+
+  attr_reader spki: untyped
+
+  attr_reader algorithm: untyped
+
+  attr_reader signature: untyped
+
+  # @rbs not_after: Integer
+  # @rbs disable: Integer
+  # @rbs spki: String
+  # @rbs algorithm: Integer
+  # @rbs signature: String
+  # @rbs return: void
+  def initialize: (Integer not_after, Integer disable, String spki, Integer algorithm, String signature) -> void
+
+  # @rbs return: Integer
+  def type: () -> Integer
+
+  # @rbs return: String
+  def encode: () -> String
+
+  # The two-byte length prefix of the signature field is encoded as 0x0000 and
+  # no signature bytes follow.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1.1-4.1
+  #
+  # @rbs return: ECHConfig::ECHConfigContents::Extensions::ECHAuth
+  def without_signature: () -> ECHConfig::ECHConfigContents::Extensions::ECHAuth
+
+  # rubocop:disable Metrics/AbcSize
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
+  # @rbs octet: String
+  # @rbs return: ECHConfig::ECHConfigContents::Extensions::ECHAuth
+  def self.decode: (String octet) -> ECHConfig::ECHConfigContents::Extensions::ECHAuth
+end
