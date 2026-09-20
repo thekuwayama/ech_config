@@ -1,21 +1,21 @@
 # Generated from lib/ech_config/ech_config_contents/extensions.rb with RBS::Inline
 
-# @rbs inherits Hash[Integer, ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
-class ECHConfig::ECHConfigContents::Extensions < Hash[Integer, ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
+# @rbs inherits Hash[Integer, ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension]
+class ECHConfig::ECHConfigContents::Extensions < Hash[Integer, ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension]
 end
 
 # https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2
 class ECHConfig::ECHConfigContents::Extensions
-  # @rbs extensions: Array[ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
+  # @rbs extensions: Array[ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension]
   # @rbs return: void
-  def initialize: (?Array[ECHConfig::ECHConfigContents::Extensions::UnknownExtension] extensions) -> void
+  def initialize: (?Array[ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension] extensions) -> void
 
   # @rbs return: String
   def encode: () -> String
 
-  # @rbs ex: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
+  # @rbs ex: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
   # @rbs return: self
-  def <<: (ECHConfig::ECHConfigContents::Extensions::UnknownExtension ex) -> self
+  def <<: (ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension ex) -> self
 
   # Clients MUST parse the extension list and check for unsupported mandatory extensions.
   # If an unsupported mandatory extension is present, clients MUST ignore the ECHConfig.
