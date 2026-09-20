@@ -23,7 +23,6 @@ class ECHConfig::ECHConfigContents::Extensions
   def encode
     values.map(&:encode).join
   end
-  alias load encode
 
   # @rbs ex: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
   # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
@@ -68,8 +67,4 @@ class ECHConfig::ECHConfigContents::Extensions
   end
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/PerceivedComplexity
-
-  class << self
-    alias store decode
-  end
 end

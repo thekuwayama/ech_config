@@ -32,7 +32,7 @@ class ECHConfig::ECHConfigContents
     @key_config.encode \
     + [@maximum_name_length].pack('C') \
     + @public_name.then { |s| [s.length].pack('C') + s } \
-    + @extensions.load.then { |s| [s.length].pack('n') + s }
+    + @extensions.encode.then { |s| [s.length].pack('n') + s }
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -62,7 +62,7 @@ class ECHConfig::ECHConfigContents
     i += 2
     raise ::ECHConfig::DecodeError if i + ex_len != octet.length
 
-    extensions = Extensions.store(octet.slice(i, ex_len) || '')
+    extensions = Extensions.decode(octet.slice(i, ex_len) || '')
     new(
       key_config,
       maximum_name_length,

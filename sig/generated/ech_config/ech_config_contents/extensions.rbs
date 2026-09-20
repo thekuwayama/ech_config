@@ -13,8 +13,6 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs return: String
   def encode: () -> String
 
-  alias load encode
-
   # @rbs ex: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
   # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
   def <<: (ECHConfig::ECHConfigContents::Extensions::UnknownExtension ex) -> ECHConfig::ECHConfigContents::Extensions::UnknownExtension
@@ -31,6 +29,4 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs octet: String
   # @rbs return: ECHConfig::ECHConfigContents::Extensions
   def self.decode: (String octet) -> ECHConfig::ECHConfigContents::Extensions
-
-  alias self.store self.decode
 end
