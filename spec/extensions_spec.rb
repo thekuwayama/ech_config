@@ -184,6 +184,65 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
     end
   end
 
+  context 'ech_auth, which is not the last extension' do
+    let(:octet) do
+      <<-BIN.split.map(&:hex).map(&:chr).join
+        fe 0d 00 17 00 00 00 00     68 00 00 00 00 00 04 30
+        59 30 13 04 03 00 04 01     02 03 04 00 01 00 02 aa
+        bb
+      BIN
+    end
+
+    it 'should NOT decode' do
+      expect { extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+    end
+
+    it 'should NOT be constructed' do
+      expect do
+        extensions.new(
+          [
+            ech_auth.new(0x68000000, 0, "\x30\x59\x30\x13", 0x0403, "\x01"),
+            ECHConfig::ECHConfigContents::Extensions::UnknownExtension.new(0x0001, "\xaa\xbb")
+          ]
+        )
+      end.to raise_error ArgumentError
+
+      exs = extensions.new(
+        [ech_auth.new(0x68000000, 0, "\x30\x59\x30\x13", 0x0403, "\x01")]
+      )
+      expect do
+        exs << ECHConfig::ECHConfigContents::Extensions::UnknownExtension.new(0x0001, "\xaa\xbb")
+      end.to raise_error ArgumentError
+    end
+  end
+
+  context 'ech_auth and ech_authinfo, which are carried by a single ECHConfig' do
+    let(:octet) do
+      <<-BIN.split.map(&:hex).map(&:chr).join
+        fe 0e 00 22 00 20 01 01     01 01 01 01 01 01 01 01
+        01 01 01 01 01 01 01 01     01 01 01 01 01 01 01 01
+        01 01 01 01 01 01 fe 0d     00 17 00 00 00 00 68 00
+        00 00 00 00 04 30 59 30     13 04 03 00 04 01 02 03
+        04
+      BIN
+    end
+
+    it 'should NOT decode' do
+      expect { extensions.decode(octet) }.to raise_error ECHConfig::DecodeError
+    end
+
+    it 'should NOT be constructed' do
+      expect do
+        extensions.new(
+          [
+            ech_auth_info.new(["\x01" * 32]),
+            ech_auth.new(0x68000000, 0, "\x30\x59\x30\x13", 0x0403, "\x01")
+          ]
+        )
+      end.to raise_error ArgumentError
+    end
+  end
+
   context 'unknown extension' do
     let(:octet) do
       <<-BIN.split.map(&:hex).map(&:chr).join

@@ -20,7 +20,7 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs return: void
   def initialize(extensions = [])
     super()
-    extensions.each { |ex| self[ex.type] = ex }
+    extensions.each { |ex| self << ex }
   end
 
   # @rbs return: String
@@ -31,8 +31,25 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs ex: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
   # @rbs return: self
   def <<(ex)
+    raise ArgumentError unless self.class.valid_order?(keys | [ex.type])
+
     store(ex.type, ex)
     self
+  end
+
+  # A single ECHConfig MUST NOT carry both extensions.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1-2
+  #
+  # The ech_auth extension MUST be the last extension in the ECHConfig's
+  # extension list.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1-3
+  #
+  # @rbs types: Array[Integer]
+  # @rbs return: bool
+  def self.valid_order?(types)
+    return true unless types.include?(ECHAuth::TYPE)
+
+    !types.include?(ECHAuthInfo::TYPE) && types.last == ECHAuth::TYPE
   end
 
   # Clients MUST parse the extension list and check for unsupported mandatory extensions.
@@ -62,11 +79,11 @@ class ECHConfig::ECHConfigContents::Extensions
       raise ::ECHConfig::DecodeError if extensions.include?(type)
 
       ex = decode_extension(octet.slice(i + 4, ex_len) || '', type)
-
-      extensions << ex
+      extensions.store(type, ex)
       i += 4 + ex_len
     end
     raise ::ECHConfig::DecodeError if i != octet.length
+    raise ::ECHConfig::DecodeError unless valid_order?(extensions.keys)
 
     extensions
   end
