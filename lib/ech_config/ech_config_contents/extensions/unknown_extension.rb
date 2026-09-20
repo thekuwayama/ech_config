@@ -28,12 +28,6 @@ class ECHConfig::ECHConfigContents::Extensions::UnknownExtension
     !(@type & MANDATORY_BIT).zero?
   end
 
-  # @rbs other: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
-  # @rbs return: bool
-  def ==(other)
-    other.type == @type && other.data == @data
-  end
-
   # @rbs octet: String
   # @rbs type: Integer
   # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension

@@ -21,10 +21,6 @@ class ECHConfig::ECHConfigContents::Extensions::UnknownExtension
   # @rbs return: bool
   def mandatory?: () -> bool
 
-  # @rbs other: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
-  # @rbs return: bool
-  def ==: (ECHConfig::ECHConfigContents::Extensions::UnknownExtension other) -> bool
-
   # @rbs octet: String
   # @rbs type: Integer
   # @rbs return: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
