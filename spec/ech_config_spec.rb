@@ -116,6 +116,9 @@ RSpec.describe ECHConfig do
     end
 
     def echconfig(key, signature)
+      unknown = ECHConfig::ECHConfigContents::Extensions::UnknownExtension.new(
+        0x0001, "\xaa\xbb"
+      )
       ech_auth = ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(
         0x6984d7d6, 0, key.public_to_der, 0x0807, signature
       )
@@ -125,7 +128,7 @@ RSpec.describe ECHConfig do
           key_config,
           0,
           'localhost',
-          ECHConfig::ECHConfigContents::Extensions.new([ech_auth])
+          ECHConfig::ECHConfigContents::Extensions.new([unknown, ech_auth])
         )
       )
     end
@@ -134,11 +137,18 @@ RSpec.describe ECHConfig do
       signature = key.sign(nil, echconfig(key, '').to_be_signed)
       signed = ECHConfig.decode_vectors(echconfig(key, signature).encode).first
 
+      expect(signed.echconfig_contents.extensions.keys)
+        .to eq [0x0001, ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
+
       ech_auth = signed
                  .echconfig_contents
                  .extensions[ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
       expect(ech_auth.signature).to eq signature
       expect(signed.to_be_signed).to eq echconfig(key, '').to_be_signed
+      expect(signed.to_be_signed).to include "\x00\x01\x00\x02\xaa\xbb"
+      expect(signed.to_be_signed.length)
+        .to eq ECHConfig::ECHConfigContents::Extensions::ECHAuth::CONTEXT_LABEL.length \
+               + signed.encode.length - signature.length
       expect(
         OpenSSL::PKey.read(ech_auth.spki)
                      .verify(nil, ech_auth.signature, signed.to_be_signed)
