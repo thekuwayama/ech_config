@@ -34,6 +34,39 @@ class ECHConfig
     @version + @echconfig_contents.encode.then { |s| [s.length].pack('n') + s }
   end
 
+  # to_be_signed = context_label || ECHConfigTBS
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1.1-2
+  #
+  # ECHConfigTBS (To-Be-Signed) is a fresh serialization of the ECHConfig
+  # structure including the ech_auth extension, but with the signature field
+  # within ech_auth set to zero-length. The ech_auth extension data length,
+  # ECHConfig extensions vector length, and ECHConfig length field are
+  # recomputed for that serialization.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1.1-4.1
+  #
+  # @rbs return: String
+  def to_be_signed
+    ech_auth = @echconfig_contents.extensions[ECHConfigContents::Extensions::ECHAuth::TYPE]
+    raise ::ECHConfig::Error \
+      unless ech_auth.is_a?(ECHConfigContents::Extensions::ECHAuth)
+
+    extensions = ECHConfigContents::Extensions.new(
+      @echconfig_contents.extensions.values.map do |ex|
+        ex.equal?(ech_auth) ? ech_auth.without_signature : ex
+      end
+    )
+    ECHConfigContents::Extensions::ECHAuth::CONTEXT_LABEL \
+    + self.class.new(
+      @version,
+      ECHConfigContents.new(
+        @echconfig_contents.key_config,
+        @echconfig_contents.maximum_name_length,
+        @echconfig_contents.public_name,
+        extensions
+      )
+    ).encode
+  end
+
   # rubocop:disable Metrics/CyclomaticComplexity
   # @rbs octet: String
   # @rbs return: Array[ECHConfig]
