@@ -61,7 +61,7 @@ class ECHConfig::ECHConfigContents::Extensions
       # There MUST NOT be more than one extension of the same type.
       raise ::ECHConfig::DecodeError if extensions.include?(type)
 
-      ex = UnknownExtension.decode(octet.slice(i + 4, ex_len) || '', type)
+      ex = decode_extension(octet.slice(i + 4, ex_len) || '', type)
 
       extensions << ex
       i += 4 + ex_len
@@ -72,4 +72,15 @@ class ECHConfig::ECHConfigContents::Extensions
   end
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/PerceivedComplexity
+
+  # @rbs octet: String
+  # @rbs type: Integer
+  # @rbs return: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
+  def self.decode_extension(octet, type)
+    case type
+    when ECHAuthInfo::TYPE then ECHAuthInfo.decode(octet)
+    else UnknownExtension.decode(octet, type)
+    end
+  end
+  private_class_method :decode_extension
 end

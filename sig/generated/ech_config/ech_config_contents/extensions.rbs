@@ -29,4 +29,9 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs octet: String
   # @rbs return: ECHConfig::ECHConfigContents::Extensions
   def self.decode: (String octet) -> ECHConfig::ECHConfigContents::Extensions
+
+  # @rbs octet: String
+  # @rbs type: Integer
+  # @rbs return: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
+  def self.decode_extension: (String octet, Integer type) -> ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
 end
