@@ -126,7 +126,7 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
       ex = exs[ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
       expect(ex).to be_a ECHConfig::ECHConfigContents::Extensions::ECHAuth
       expect(ex.not_after).to eq 0x6984d7d6
-      expect(ex.disable).to eq 0
+      expect(ex.disable?).to be false
       expect(ex.spki).to eq spki
       expect(ex.algorithm).to eq 0x0807
       expect(ex.signature).to eq signature
@@ -141,6 +141,13 @@ RSpec.describe ECHConfig::ECHConfigContents::Extensions do
           [ECHConfig::ECHConfigContents::Extensions::ECHAuth.new(0x6984d7d6, 0, spki, 0x0807, signature)]
         ).encode
       ).to eq octet
+    end
+
+    it 'should be disabled' do
+      expect(
+        ECHConfig::ECHConfigContents::Extensions::ECHAuth
+          .new(0x6984d7d6, 1, spki, 0x0807, signature).disable?
+      ).to be true
     end
   end
 

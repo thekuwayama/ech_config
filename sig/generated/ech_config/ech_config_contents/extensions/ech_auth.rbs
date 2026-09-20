@@ -21,8 +21,6 @@ class ECHConfig::ECHConfigContents::Extensions::ECHAuth
 
   attr_reader not_after: untyped
 
-  attr_reader disable: untyped
-
   attr_reader spki: untyped
 
   attr_reader algorithm: untyped
@@ -39,6 +37,12 @@ class ECHConfig::ECHConfigContents::Extensions::ECHAuth
 
   # @rbs return: Integer
   def type: () -> Integer
+
+  # When set to 1, the client MUST NOT attempt ECH on the retry.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1-7
+  #
+  # @rbs return: bool
+  def disable?: () -> bool
 
   # @rbs return: String
   def encode: () -> String

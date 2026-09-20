@@ -22,7 +22,7 @@ class ECHConfig::ECHConfigContents::Extensions::ECHAuth
   # uint64 not_after, uint8 disable and the length prefix of spki
   FIXED_LENGTH = 8 + 1 + 2
 
-  attr_reader :not_after, :disable, :spki, :algorithm, :signature
+  attr_reader :not_after, :spki, :algorithm, :signature
 
   # @rbs not_after: Integer
   # @rbs disable: Integer
@@ -52,6 +52,14 @@ class ECHConfig::ECHConfigContents::Extensions::ECHAuth
   # @rbs return: Integer
   def type
     TYPE
+  end
+
+  # When set to 1, the client MUST NOT attempt ECH on the retry.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1-7
+  #
+  # @rbs return: bool
+  def disable?
+    @disable == 1
   end
 
   # @rbs return: String
