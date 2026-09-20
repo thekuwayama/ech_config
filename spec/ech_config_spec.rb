@@ -40,25 +40,35 @@ RSpec.describe ECHConfig do
   end
 
   context 'echconfig, which has ech_auth' do
+    # ech-auth-interop test vector material, in draft-02 layout
+    # https://github.com/grittygrease/ech-auth-interop/blob/main/test-vectors/interop.json
     let(:octet) do
       <<-BIN.split.map(&:hex).map(&:chr).join
-        fe 0d 00 51 00 00 20 00     1e 00 00 00 00 00 00 00
-        00 00 00 00 00 00 00 00     00 00 00 00 00 00 00 00
-        00 00 00 00 00 00 00 00     04 00 01 00 01 00 09 6c
-        6f 63 61 6c 68 6f 73 74     00 1b fe 0d 00 17 00 00
-        00 00 68 00 00 00 00 00     04 30 59 30 13 04 03 00
-        04 01 02 03 04
+        fe 0d 00 b9 01 00 20 00     20 1f c3 4f 30 da e9 73
+        3d e8 1e 17 3e c5 9f f1     0f 1e ee a4 53 04 8f 1e
+        30 aa 0b 45 25 88 56 a9     21 00 04 00 01 00 01 00
+        0b 65 78 61 6d 70 6c 65     2e 63 6f 6d 00 7f fe 0d
+        00 7b 00 00 00 00 69 84     d7 d6 00 00 2c 30 2a 30
+        05 06 03 2b 65 70 03 21     00 aa e6 a4 8a 7e eb 96
+        c6 da 22 bb 84 b9 52 85     3e d7 82 50 3f aa f8 ac
+        f6 b5 27 ee cd c3 c7 36     3f 08 07 00 40 6d 86 cf
+        1f 46 07 0a 53 70 e2 69     94 a5 bc 30 58 b2 0d 09
+        33 ac 70 97 f1 e6 6c 92     46 04 d5 40 38 a2 20 25
+        eb 52 21 5e 54 bf 3f ce     8e f9 7a 7d 4f d2 a1 4f
+        56 f8 db 51 03 49 e4 c3     2a b9 d4 20 0f
       BIN
     end
 
     let(:tbs_octet) do
       <<-BIN.split.map(&:hex).map(&:chr).join
-        fe 0d 00 4d 00 00 20 00     1e 00 00 00 00 00 00 00
-        00 00 00 00 00 00 00 00     00 00 00 00 00 00 00 00
-        00 00 00 00 00 00 00 00     04 00 01 00 01 00 09 6c
-        6f 63 61 6c 68 6f 73 74     00 17 fe 0d 00 13 00 00
-        00 00 68 00 00 00 00 00     04 30 59 30 13 04 03 00
-        00
+        fe 0d 00 79 01 00 20 00     20 1f c3 4f 30 da e9 73
+        3d e8 1e 17 3e c5 9f f1     0f 1e ee a4 53 04 8f 1e
+        30 aa 0b 45 25 88 56 a9     21 00 04 00 01 00 01 00
+        0b 65 78 61 6d 70 6c 65     2e 63 6f 6d 00 3f fe 0d
+        00 3b 00 00 00 00 69 84     d7 d6 00 00 2c 30 2a 30
+        05 06 03 2b 65 70 03 21     00 aa e6 a4 8a 7e eb 96
+        c6 da 22 bb 84 b9 52 85     3e d7 82 50 3f aa f8 ac
+        f6 b5 27 ee cd c3 c7 36     3f 08 07 00 00
       BIN
     end
 
@@ -73,7 +83,8 @@ RSpec.describe ECHConfig do
     end
 
     it 'should decode' do
-      expect(ech_auth.signature).to eq "\x01\x02\x03\x04"
+      expect(ech_auth.not_after).to eq 0x6984d7d6
+      expect(ech_auth.algorithm).to eq 0x0807
       expect(ech_config.encode).to eq octet
     end
 
