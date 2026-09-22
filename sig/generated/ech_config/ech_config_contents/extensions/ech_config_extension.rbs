@@ -17,4 +17,7 @@ module ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension : _ECHConfig
 
   # @rbs return: bool
   def mandatory?: () -> bool
+
+  # @rbs return: bool
+  def supported?: () -> bool
 end

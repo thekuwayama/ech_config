@@ -17,6 +17,40 @@ $ gem install ech_config
 ```
 
 
+## Usage
+
+```ruby
+require 'ech_config'
+
+echconfigs = ECHConfig.decode_vectors(octet)
+```
+
+Clients MUST ignore an ECHConfig that carries an unsupported mandatory ECHConfig extension ([RFC 9849 4.2](https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2-2)). This gem decodes every extension it does not know as `UnknownExtension`, so:
+
+```ruby
+echconfigs.reject do |echconfig|
+  echconfig.echconfig_contents.extensions.any_unsupported_mandatory?
+end
+```
+
+`ech_authinfo` and `ech_auth` ([draft-sullivan-tls-signed-ech-updates-02](https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1)) are decoded as `ECHAuthInfo` / `ECHAuth`. `ECHConfig#to_be_signed` returns the bytes an `ech_auth` signature is computed over; validating `not_after`, `trusted_keys` and the signature itself is left to the caller.
+
+```ruby
+ech_auth = echconfig
+           .echconfig_contents
+           .extensions[ECHConfig::ECHConfigContents::Extensions::ECHAuth::TYPE]
+OpenSSL::PKey.read(ech_auth.spki)
+             .verify(nil, ech_auth.signature, echconfig.to_be_signed)
+```
+
+The draft leaves both extension types unassigned (TBD1 / TBD2), so `ech_config` uses placeholder codepoints until IANA assigns them.
+
+| Extension | Draft | Placeholder |
+| --- | --- | --- |
+| `ech_authinfo` | TBD1 | `0xfe0e` |
+| `ech_auth` | TBD2 | `0xfe0d` |
+
+
 ## License
 
 The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).

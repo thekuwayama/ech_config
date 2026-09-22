@@ -22,4 +22,9 @@ module ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
   def mandatory?
     !(type & MANDATORY_BIT).zero?
   end
+
+  # @rbs return: bool
+  def supported?
+    true
+  end
 end
