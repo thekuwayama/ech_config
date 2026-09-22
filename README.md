@@ -43,7 +43,12 @@ OpenSSL::PKey.read(ech_auth.spki)
              .verify(nil, ech_auth.signature, echconfig.to_be_signed)
 ```
 
-Both codepoints are placeholders until IANA assigns them, so they are NOT interoperable yet.
+The draft leaves both extension types unassigned (TBD1 / TBD2), so `ech_config` uses placeholder codepoints until IANA assigns them.
+
+| Extension | Draft | Placeholder |
+| --- | --- | --- |
+| `ech_authinfo` | TBD1 | `0xfe0e` |
+| `ech_auth` | TBD2 | `0xfe0d` |
 
 
 ## License
