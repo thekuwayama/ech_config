@@ -17,6 +17,17 @@ class ECHConfig::ECHConfigContents::Extensions
   # @rbs return: self
   def <<: (ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension ex) -> self
 
+  # A single ECHConfig MUST NOT carry both extensions.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1-2
+  #
+  # The ech_auth extension MUST be the last extension in the ECHConfig's
+  # extension list.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1-3
+  #
+  # @rbs types: Array[Integer]
+  # @rbs return: bool
+  def self.valid_ech_auth?: (Array[Integer] types) -> bool
+
   # Clients MUST parse the extension list and check for unsupported mandatory extensions.
   # If an unsupported mandatory extension is present, clients MUST ignore the ECHConfig.
   # https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2-2

@@ -16,6 +16,19 @@ class ECHConfig
   # @rbs return: String
   def encode: () -> String
 
+  # to_be_signed = context_label || ECHConfigTBS
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1.1-2
+  #
+  # ECHConfigTBS (To-Be-Signed) is a fresh serialization of the ECHConfig
+  # structure including the ech_auth extension, but with the signature field
+  # within ech_auth set to zero-length. The ech_auth extension data length,
+  # ECHConfig extensions vector length, and ECHConfig length field are
+  # recomputed for that serialization.
+  # https://datatracker.ietf.org/doc/html/draft-sullivan-tls-signed-ech-updates-02#section-5.1.1-4.1
+  #
+  # @rbs return: String
+  def to_be_signed: () -> String
+
   # rubocop:disable Metrics/CyclomaticComplexity
   # @rbs octet: String
   # @rbs return: Array[ECHConfig]
