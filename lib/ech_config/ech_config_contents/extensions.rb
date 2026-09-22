@@ -2,17 +2,21 @@
 
 # rbs_inline: enabled
 
-# @rbs inherits Hash[Integer, ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
+# @rbs inherits Hash[Integer, ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension]
 class ECHConfig::ECHConfigContents::Extensions < Hash
   # define class
 end
+
+# ech_config_extension.rb needs to be loaded first so that each extension can
+# include it
+require_relative 'extensions/ech_config_extension'
 
 Dir["#{File.dirname(__FILE__)}/extensions/*.rb"]
   .sort.each { |f| require f }
 
 # https://datatracker.ietf.org/doc/html/rfc9849.html#section-4.2
 class ECHConfig::ECHConfigContents::Extensions
-  # @rbs extensions: Array[ECHConfig::ECHConfigContents::Extensions::UnknownExtension]
+  # @rbs extensions: Array[ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension]
   # @rbs return: void
   def initialize(extensions = [])
     super()
@@ -24,7 +28,7 @@ class ECHConfig::ECHConfigContents::Extensions
     values.map(&:encode).join
   end
 
-  # @rbs ex: ECHConfig::ECHConfigContents::Extensions::UnknownExtension
+  # @rbs ex: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
   # @rbs return: self
   def <<(ex)
     store(ex.type, ex)
@@ -57,7 +61,7 @@ class ECHConfig::ECHConfigContents::Extensions
       # There MUST NOT be more than one extension of the same type.
       raise ::ECHConfig::DecodeError if extensions.include?(type)
 
-      ex = UnknownExtension.decode(octet.slice(i + 4, ex_len) || '', type)
+      ex = decode_extension(octet.slice(i + 4, ex_len) || '', type)
 
       extensions << ex
       i += 4 + ex_len
@@ -68,4 +72,15 @@ class ECHConfig::ECHConfigContents::Extensions
   end
   # rubocop:enable Metrics/CyclomaticComplexity
   # rubocop:enable Metrics/PerceivedComplexity
+
+  # @rbs octet: String
+  # @rbs type: Integer
+  # @rbs return: ECHConfig::ECHConfigContents::Extensions::ECHConfigExtension
+  def self.decode_extension(octet, type)
+    case type
+    when ECHAuthInfo::TYPE then ECHAuthInfo.decode(octet)
+    else UnknownExtension.decode(octet, type)
+    end
+  end
+  private_class_method :decode_extension
 end
