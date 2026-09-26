@@ -1,0 +1,107 @@
+#!/usr/bin/env ruby
+# encoding: ascii-8bit
+# frozen_string_literal: true
+
+require 'ech_config'
+require 'openssl'
+require 'optparse'
+
+ECH_AUTH = ECHConfig::ECHConfigContents::Extensions::ECHAuth
+
+ED25519 = 0x0807
+ECDSA_SECP256R1_SHA256 = 0x0403
+
+def algorithm(key)
+  if key.oid == 'ED25519'
+    ED25519
+  elsif key.is_a?(OpenSSL::PKey::EC) && key.group.curve_name == 'prime256v1'
+    ECDSA_SECP256R1_SHA256
+  end
+end
+
+def digest(algorithm)
+  algorithm == ECDSA_SECP256R1_SHA256 ? 'SHA256' : nil
+end
+
+def read_echconfig(path)
+  echconfigs = ECHConfig.decode_vectors(File.binread(path))
+  abort 'error: config must contain exactly one ECHConfig' unless echconfigs.length == 1
+
+  echconfigs.first
+end
+
+def with_ech_auth(echconfig, ech_auth)
+  contents = echconfig.echconfig_contents
+  extensions = ECHConfig::ECHConfigContents::Extensions.new(
+    contents.extensions.values.reject { |ex| ex.type == ECH_AUTH::TYPE } + [ech_auth]
+  )
+  ECHConfig.new(
+    echconfig.version,
+    ECHConfig::ECHConfigContents.new(
+      contents.key_config,
+      contents.maximum_name_length,
+      contents.public_name,
+      extensions
+    )
+  )
+end
+
+# rubocop:disable Metrics/AbcSize
+def sign(argv)
+  opts = { not_after: Time.now.to_i + 86_400, disable: 0 }
+  OptionParser.new do |o|
+    o.on('-k', '--key PATH') { |v| opts[:key] = v }
+    o.on('-c', '--config PATH') { |v| opts[:config] = v }
+    o.on('-o', '--output PATH') { |v| opts[:output] = v }
+    o.on('--not-after UNIX', Integer) { |v| opts[:not_after] = v }
+    o.on('--disable') { opts[:disable] = 1 }
+  end.parse!(argv)
+  abort 'error: --key, --config and --output are required' \
+    unless opts.values_at(:key, :config, :output).all?
+
+  key = OpenSSL::PKey.read(File.read(opts[:key]))
+  alg = algorithm(key) || abort('error: unsupported key')
+  echconfig = read_echconfig(opts[:config])
+  ech_auth = ECH_AUTH.new(opts[:not_after], opts[:disable], key.public_to_der, alg, '')
+  signature = key.sign(digest(alg), with_ech_auth(echconfig, ech_auth).to_be_signed)
+  signed = with_ech_auth(
+    echconfig,
+    ECH_AUTH.new(opts[:not_after], opts[:disable], key.public_to_der, alg, signature)
+  )
+  File.binwrite(opts[:output], signed.encode)
+end
+
+def verify(argv)
+  opts = { time: Time.now.to_i, trust_anchors: [] }
+  OptionParser.new do |o|
+    o.on('-c', '--config PATH') { |v| opts[:config] = v }
+    o.on('--time UNIX', Integer) { |v| opts[:time] = v }
+    o.on('-t', '--trust-anchor HEX', /\A\h{64}\z/) { |v| opts[:trust_anchors] << [v].pack('H*') }
+  end.parse!(argv)
+  abort 'error: --config is required' unless opts[:config]
+
+  echconfig = read_echconfig(opts[:config])
+  ech_auth = echconfig.echconfig_contents.extensions[ECH_AUTH::TYPE]
+  abort 'error: ech_auth is missing' unless ech_auth.is_a?(ECH_AUTH)
+  abort 'error: spki is not in trusted_keys' \
+    unless opts[:trust_anchors].include?(OpenSSL::Digest::SHA256.digest(ech_auth.spki))
+  abort 'error: expired' unless opts[:time] < ech_auth.not_after
+
+  key = OpenSSL::PKey.read(ech_auth.spki)
+  abort 'error: algorithm does not match spki' unless algorithm(key) == ech_auth.algorithm
+  abort 'error: invalid signature' \
+    unless key.verify(digest(ech_auth.algorithm), ech_auth.signature, echconfig.to_be_signed)
+
+  puts "OK not_after=#{ech_auth.not_after} disable=#{ech_auth.disable?}"
+end
+# rubocop:enable Metrics/AbcSize
+
+begin
+  case ARGV.shift
+  when 'sign' then sign(ARGV)
+  when 'verify' then verify(ARGV)
+  else abort 'usage: interop {sign|verify} [options]'
+  end
+rescue StandardError => e
+  abort "error: #{e.message}"
+end
